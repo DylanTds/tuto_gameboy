@@ -1,8 +1,8 @@
 /*
 
- HEROSPRITE.C
+ BASICBACKGROUND.H
 
- Tile Source File.
+ Include File.
 
  Info:
   Form                 : All tiles as one unit.
@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : None.
   Tile size            : 8 x 8
-  Tiles                : 0 to 1
+  Tiles                : 0 to 7
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -22,13 +22,10 @@
 
 */
 
-/* Start of tile array. */
-unsigned char Hero[] =
-{
-  0xFF,0xFF,0xFF,0x81,0xFF,0xA5,0xFF,0xC3,
-  0x66,0x5A,0xFF,0x81,0x7E,0x42,0x7E,0x7E,
-  0x7E,0x7E,0xFF,0x81,0xFF,0xA5,0xFF,0xA5,
-  0xFF,0xC3,0x7E,0x5A,0xFF,0x99,0x7E,0x42
-};
 
-/* End of HEROSPRITE.C */
+/* Bank of tiles. */
+#define BackgroundTilesBank 0
+/* Start of tile array. */
+extern unsigned char BackgroundTiles[];
+
+/* End of BASICBACKGROUND.H */
