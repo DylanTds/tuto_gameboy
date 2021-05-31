@@ -1,0 +1,176 @@
+; no$gmb format .sym file
+; Generated automagically by ASxxxx linker V01.75 (SDK 3.0.0)
+; Area: .  .ABS.
+00:0000 s__HEADER
+00:0000 .init
+00:0000 s__SFR
+00:0200 s__CODE
+00:0393 s__HOME
+00:053F s__BASE
+00:0664 s__LIT
+00:0664 s__GSINIT
+00:072E s__GSINITTAIL
+00:072F s__GSFINAL
+00:C000 .OAM
+00:C0A0 s__DATA
+00:C0C6 s__BSS
+00:C11F s__HEAP
+00:C11F s__BSEG
+00:C11F s__ISEG
+00:C11F s__XSEG
+00:C11F s__OVERLAY
+00:E000 .STACK
+00:FF80 .refresh_OAM
+; Area: _CODE
+00:0200 _perfDelay
+00:0214 _detecSurface
+00:0229 _jump
+00:02BF _main
+; Area: _HEADER
+00:01D2 _exit
+; Area: _HOME
+00:0393 .set_mode
+00:03A3 .remove_VBL
+00:03A9 .remove_LCD
+00:03AF .remove_TIM
+00:03B5 .remove_SIO
+00:03BB .remove_JOY
+00:03C1 .add_VBL
+00:03C7 .add_LCD
+00:03CD .add_TIM
+00:03D3 .add_SIO
+00:03D9 .add_JOY
+00:03DF .remove_int
+00:03FF .add_int
+00:041B .wait_vbl_done
+00:041B _wait_vbl_done
+00:0432 _display_off
+00:0432 .display_off
+00:0453 .serial_IO
+00:0482 _mode
+00:048B _get_mode
+00:0490 _enable_interrupts
+00:0492 _disable_interrupts
+00:0494 _reset
+00:0494 .reset
+00:049A _set_interrupts
+00:04A5 _remove_VBL
+00:04B0 _remove_LCD
+00:04BB _remove_TIM
+00:04C6 _remove_SIO
+00:04D1 _remove_JOY
+00:04DC _add_VBL
+00:04E7 _add_LCD
+00:04F2 _add_TIM
+00:04FD _add_SIO
+00:0508 _add_JOY
+00:0513 _clock
+00:051C __printTStates
+00:051D banked_call
+00:0536 banked_ret
+; Area: _BASE
+00:053F .mv_sprite
+00:054E _move_sprite
+00:055B _set_win_data
+00:055B _set_bkg_data
+00:05A8 _set_sprite_data
+00:05D7 .padup
+00:05D7 _waitpadup
+00:05E7 .jpad
+00:0614 .wait_pad
+00:061B _joypad
+00:0620 _waitpad
+00:062A .set_sprite_tile
+00:0637 _set_sprite_tile
+00:0642 .copy_vram
+00:0651 _get_data
+00:0651 _set_data
+; Area: _LIT
+; Area: _GSINIT
+00:0664 gsinit
+; Area: _GSINITTAIL
+; Area: _GSFINAL
+; Area: _DATA
+00:C0A0 _playerlocation
+00:C0A2 _jumping
+00:C0A3 _currSpeedY
+00:C0A4 _gravity
+00:C0A5 _floorYPos
+00:C0A6 _Hero
+; Area: _BSS
+00:C0C6 __cpu
+00:C0C7 .mode
+00:C0C8 __io_out
+00:C0C9 __io_in
+00:C0CA __io_status
+00:C0CB .vbl_done
+00:C0CC __current_bank
+00:C0CD _sys_time
+00:C0CD .sys_time
+00:C0CF .int_0x40
+00:C0DF .int_0x48
+00:C0EF .int_0x50
+00:C0FF .int_0x58
+00:C10F .int_0x60
+; Area: _HEAP
+00:C11F _malloc_heap_start
+; Area: _OVERLAY
+; Area: _ISEG
+; Area: _BSEG
+; Area: _XSEG
+; Area: _SFR
+00:FF00 _P1_REG
+00:FF01 _SB_REG
+00:FF02 _SC_REG
+00:FF04 _DIV_REG
+00:FF05 _TIMA_REG
+00:FF06 _TMA_REG
+00:FF07 _TAC_REG
+00:FF0F _IF_REG
+00:FF10 _NR10_REG
+00:FF11 _NR11_REG
+00:FF12 _NR12_REG
+00:FF13 _NR13_REG
+00:FF14 _NR14_REG
+00:FF16 _NR21_REG
+00:FF17 _NR22_REG
+00:FF18 _NR23_REG
+00:FF19 _NR24_REG
+00:FF1A _NR30_REG
+00:FF1B _NR31_REG
+00:FF1C _NR32_REG
+00:FF1D _NR33_REG
+00:FF1E _NR34_REG
+00:FF20 _NR41_REG
+00:FF21 _NR42_REG
+00:FF22 _NR43_REG
+00:FF23 _NR44_REG
+00:FF24 _NR50_REG
+00:FF25 _NR51_REG
+00:FF26 _NR52_REG
+00:FF40 _LCDC_REG
+00:FF41 _STAT_REG
+00:FF42 _SCY_REG
+00:FF43 _SCX_REG
+00:FF44 _LY_REG
+00:FF45 _LYC_REG
+00:FF46 _DMA_REG
+00:FF47 _BGP_REG
+00:FF48 _OBP0_REG
+00:FF49 _OBP1_REG
+00:FF4A _WY_REG
+00:FF4B _WX_REG
+00:FF4D _KEY1_REG
+00:FF4F _VBK_REG
+00:FF51 _HDMA1_REG
+00:FF52 _HDMA2_REG
+00:FF53 _HDMA3_REG
+00:FF54 _HDMA4_REG
+00:FF55 _HDMA5_REG
+00:FF56 _RP_REG
+00:FF68 _BCPS_REG
+00:FF69 _BCPD_REG
+00:FF6A _OCPS_REG
+00:FF6B _OCPD_REG
+00:FF70 _SVBK_REG
+00:FFFF _IE_REG
