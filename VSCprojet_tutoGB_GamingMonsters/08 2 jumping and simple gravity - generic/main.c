@@ -11,7 +11,7 @@ UINT8 gravity   = -2;           // valeur qui permet de definire la vitesse de m
 UINT8 floorYPos = 80;           // definit la position Y d'entree en collision avec le sol
 
 
-// sprite random a utiliser comme hero
+// liste de sprite random a utiliser comme hero ou personnage secondaires
 unsigned char Hero[] =
 {
   0xFF,0xFF,0xFF,0x81,0xFF,0xA5,0xFF,0xC3,
@@ -19,7 +19,6 @@ unsigned char Hero[] =
   0x7E,0x7E,0xFF,0x81,0xFF,0xA5,0xFF,0xA5,
   0xFF,0xC3,0x7E,0x5A,0xFF,0x99,0x7E,0x42
 };
-
 
 /* 
     la fonction delay utilise beaucoup de ressource CPU
@@ -47,7 +46,7 @@ INT8 detecSurface( UINT8 futureYPos ){
 /*
     accelere ou decelere le personage sur l'axe Y pour sauter puis chuter
 */
-void jump(){
+void jump( UINT8 SpriteID, UINT8 spritelocation[2]){ // ajout de deux variables pour l'ID et la position du sprite à faire sauter
     INT8 colisionY;
 
     if(jumping == 0){       // si hero ne saute deja pas actuellement..
@@ -59,15 +58,15 @@ void jump(){
     // petit a petit, a un moment la vitesse Y va etre neutre (0) donc le saut et a son apogee..
     // puis negative (-2), le personnage va redescendre en accelerant a chaque boucle jusqu'a (-12)
     currSpeedY          += gravity;
-    playerlocation[1]   -= currSpeedY;              // actualisation de la position Y avec la vitesse Y (+ou-)
+    spritelocation[1]   -= currSpeedY;              // actualisation de la position Y avec la vitesse Y (+ou-)
 
-    colisionY = detecSurface(playerlocation[1]);    // verification de collision de la new positon Y par rapport au sol
+    colisionY = detecSurface(spritelocation[1]);    // verification de collision de la new positon Y par rapport au sol
 
     if(colisionY > -1){                                         // si il y a collision..
         jumping = 0;                                            // on arrete le saut du personnage
-        move_sprite(0, playerlocation[0], colisionY);           // et on aligne le personnage avec le sol
+        move_sprite(SpriteID, spritelocation[0], colisionY);           // et on aligne le personnage avec le sol
     }else{
-        move_sprite(0, playerlocation[0], playerlocation[1]);   // sinon on actualisa la position du sprite Hero
+        move_sprite(SpriteID, spritelocation[0], spritelocation[1]);   // sinon on actualisa la position du sprite Hero
     }
 }
 
@@ -77,16 +76,22 @@ void main(){
     playerlocation[1]   = floorYPos;    // position Y
     jumping             = 0;            // hero n'est pas en train de sauter
     
+    // Hero
     set_sprite_data(0, 2, Hero);
     set_sprite_tile(0, 0);
     move_sprite(0, playerlocation[0], playerlocation[1]);
+
+    // Dude01
+    set_sprite_tile(1, 1);
+    move_sprite(1, 64, 80);
 
     DISPLAY_ON;
     SHOW_SPRITES;
 
     while(1){
+
         if( (joypad() & J_B) || (jumping == 1) ){
-            jump();
+            jump(0, playerlocation);     // ne pas oublier d'indiquer le sprite 0 (Hero) et ses coordonnees !
         }
         if(joypad() & J_LEFT){
             playerlocation[0] -= 4;

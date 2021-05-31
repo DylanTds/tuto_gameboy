@@ -1,9 +1,9 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : FreeWare ANSI-C Compiler
-                              3 ; Version 2.2.1 Mon May 31 10:54:49 2021
+                              3 ; Version 2.2.1 Mon May 31 11:26:25 2021
                               4 
                               5 ;--------------------------------------------------------
-                              6 	.module lcc109160
+                              6 	.module lcc30840
                               7 	
                               8 ;--------------------------------------------------------
                               9 ; Public variables in this module
@@ -134,17 +134,17 @@
                             134 	.area _GSINIT
                             135 	.area _GSFINAL
                             136 	.area _GSINIT
-                            137 ;	main.c 104
+                            137 ;	main.c 109
                             138 ; genAssign
                             139 ; AOP_HL for _gravity
    0000 21 04 00            140 	ld	hl,#_gravity + 0
    0003 36 FE               141 	ld	(hl),#0xFE
-                            142 ;	main.c 104
+                            142 ;	main.c 109
                             143 ; genAssign
                             144 ; AOP_HL for _floorYPos
    0005 21 05 00            145 	ld	hl,#_floorYPos + 0
    0008 36 50               146 	ld	(hl),#0x50
-                            147 ;	main.c 104
+                            147 ;	main.c 109
                             148 ; genAssign (pointer)
    000A 11 06 00            149 	ld	de,#_Hero + 0
    000D 3E FF               150 	ld	a,#0xFF
@@ -344,7 +344,7 @@
                             344 ; code
                             345 ;--------------------------------------------------------
                             346 	.area _CODE
-                            347 ;	main.c 29
+                            347 ;	main.c 28
                             348 ; genLabel
                             349 ; genFunction
                             350 ;	---------------------------------
@@ -354,7 +354,7 @@
    0000                     354 _perfDelay:
    0000 C5                  355 	push	bc
                             356 	
-                            357 ;	main.c 31
+                            357 ;	main.c 30
                             358 ; genAssign
    0001 0E 00               359 	ld	c,#0x00
                             360 ; genLabel
@@ -366,10 +366,10 @@
    0005 F8 04               366 	lda	hl,4(sp)
    0007 9E                  367 	sbc	a,(hl) ; 2
    0008 D2 12 00            368 	jp	nc,00105$
-                            369 ;	main.c 32
+                            369 ;	main.c 31
                             370 ; genCall
    000B CD 00 00            371 	call	_wait_vbl_done
-                            372 ;	main.c 31
+                            372 ;	main.c 30
                             373 ; genPlus
                             374 ; genPlusIncr
    000E 0C                  375 	inc	c
@@ -382,7 +382,7 @@
    0012 C1                  382 	pop	bc
    0013 C9                  383 	ret
    0014                     384 ___perfDelay_end:
-                            385 ;	main.c 39
+                            385 ;	main.c 38
                             386 ; genLabel
                             387 ; genFunction
                             388 ;	---------------------------------
@@ -392,7 +392,7 @@
    0014                     392 _detecSurface:
    0014 C5                  393 	push	bc
                             394 	
-                            395 ;	main.c 40
+                            395 ;	main.c 39
                             396 ; genCmpLt
                             397 ; AOP_STK for 
                             398 ; AOP_HL for _floorYPos
@@ -402,7 +402,7 @@
    0019 21 05 00            402 	ld	hl,#_floorYPos + 0
    001C 9E                  403 	sbc	a,(hl) ; 2
    001D DA 25 00            404 	jp	c,00102$
-                            405 ;	main.c 41
+                            405 ;	main.c 40
                             406 ; genAssign
                             407 ; AOP_HL for _floorYPos
    0020 4E                  408 	ld	c,(hl)
@@ -411,7 +411,7 @@
    0022 C3 27 00            411 	jp	00103$
                             412 ; genLabel
    0025                     413 00102$:
-                            414 ;	main.c 43
+                            414 ;	main.c 42
                             415 ; genRet
    0025 1E FF               416 	ld	e,#0xFF
                             417 ; genLabel
@@ -421,7 +421,7 @@
    0027 C1                  421 	pop	bc
    0028 C9                  422 	ret
    0029                     423 ___detecSurface_end:
-                            424 ;	main.c 50
+                            424 ;	main.c 49
                             425 ; genLabel
                             426 ; genFunction
                             427 ;	---------------------------------
@@ -431,7 +431,7 @@
    0029                     431 _jump:
    0029 C5                  432 	push	bc
    002A E8 FD               433 	lda	sp,-3(sp)
-                            434 ;	main.c 53
+                            434 ;	main.c 52
                             435 ; genCmpEq
                             436 ; AOP_HL for _jumping
    002C 21 02 00            437 	ld	hl,#_jumping + 0
@@ -442,19 +442,19 @@
    0036                     442 00110$:
    0036 C3 43 00            443 	jp	00102$
    0039                     444 00111$:
-                            445 ;	main.c 54
+                            445 ;	main.c 53
                             446 ; genAssign
                             447 ; AOP_HL for _jumping
    0039 21 02 00            448 	ld	hl,#_jumping + 0
    003C 36 01               449 	ld	(hl),#0x01
-                            450 ;	main.c 55
+                            450 ;	main.c 54
                             451 ; genAssign
                             452 ; AOP_HL for _currSpeedY
    003E 21 03 00            453 	ld	hl,#_currSpeedY + 0
    0041 36 0E               454 	ld	(hl),#0x0E
                             455 ; genLabel
    0043                     456 00102$:
-                            457 ;	main.c 61
+                            457 ;	main.c 60
                             458 ; genPlus
                             459 ; AOP_HL for _currSpeedY
                             460 ; AOP_HL for _gravity
@@ -465,360 +465,416 @@
    004A 86                  465 	add	a,(hl)
    004B 21 03 00            466 	ld	hl,#_currSpeedY + 0
    004E 77                  467 	ld	(hl),a
-                            468 ;	main.c 62
+                            468 ;	main.c 61
                             469 ; genPlus
-                            470 ; AOP_STK for _jump_sloc1_1_0
-                            471 ; genPlusIncr
-                            472 ;	genPlusIncr failed
-   004F 11 00 00            473 	ld	de,#_playerlocation + 0
-   0052 21 01 00            474 	ld	hl,#0x0001
-   0055 19                  475 	add	hl,de
-   0056 7D                  476 	ld	a,l
-   0057 54                  477 	ld	d,h
-   0058 F8 00               478 	lda	hl,0(sp)
-   005A 22                  479 	ld	(hl+),a
-   005B 72                  480 	ld	(hl),d
-                            481 ; genPointerGet
-                            482 ; AOP_STK for _jump_sloc1_1_0
-                            483 ; AOP_STK for _jump_sloc0_1_0
-   005C 2B                  484 	dec	hl
-   005D 5E                  485 	ld	e,(hl)
-   005E 23                  486 	inc	hl
-   005F 56                  487 	ld	d,(hl)
-   0060 1A                  488 	ld	a,(de)
-   0061 23                  489 	inc	hl
-   0062 77                  490 	ld	(hl),a
-                            491 ; genMinus
-                            492 ; AOP_STK for _jump_sloc0_1_0
-                            493 ; AOP_HL for _currSpeedY
-   0063 7E                  494 	ld	a,(hl)
-   0064 21 03 00            495 	ld	hl,#_currSpeedY + 0
-   0067 96                  496 	sub	a,(hl)
-   0068 4F                  497 	ld	c,a
-                            498 ; genAssign (pointer)
-                            499 ; AOP_STK for _jump_sloc1_1_0
-   0069 F8 00               500 	lda	hl,0(sp)
-   006B 5E                  501 	ld	e,(hl)
-   006C 23                  502 	inc	hl
-   006D 56                  503 	ld	d,(hl)
-   006E 79                  504 	ld	a,c
-   006F 12                  505 	ld	(de),a
-                            506 ;	main.c 64
-                            507 ; genIpush
+                            470 ; AOP_STK for 
+                            471 ; AOP_STK for _jump_sloc1_1_0
+                            472 ; genPlusIncr
+                            473 ;	genPlusIncr failed
+   004F F8 08               474 	lda	hl,8(sp)
+   0051 5E                  475 	ld	e,(hl)
+   0052 23                  476 	inc	hl
+   0053 56                  477 	ld	d,(hl)
+   0054 21 01 00            478 	ld	hl,#0x0001
+   0057 19                  479 	add	hl,de
+   0058 7D                  480 	ld	a,l
+   0059 54                  481 	ld	d,h
+   005A F8 00               482 	lda	hl,0(sp)
+   005C 22                  483 	ld	(hl+),a
+   005D 72                  484 	ld	(hl),d
+                            485 ; genPointerGet
+                            486 ; AOP_STK for _jump_sloc1_1_0
+                            487 ; AOP_STK for _jump_sloc0_1_0
+   005E 2B                  488 	dec	hl
+   005F 5E                  489 	ld	e,(hl)
+   0060 23                  490 	inc	hl
+   0061 56                  491 	ld	d,(hl)
+   0062 1A                  492 	ld	a,(de)
+   0063 23                  493 	inc	hl
+   0064 77                  494 	ld	(hl),a
+                            495 ; genMinus
+                            496 ; AOP_STK for _jump_sloc0_1_0
+                            497 ; AOP_HL for _currSpeedY
+   0065 7E                  498 	ld	a,(hl)
+   0066 21 03 00            499 	ld	hl,#_currSpeedY + 0
+   0069 96                  500 	sub	a,(hl)
+   006A 4F                  501 	ld	c,a
+                            502 ; genAssign (pointer)
+                            503 ; AOP_STK for _jump_sloc1_1_0
+   006B F8 00               504 	lda	hl,0(sp)
+   006D 5E                  505 	ld	e,(hl)
+   006E 23                  506 	inc	hl
+   006F 56                  507 	ld	d,(hl)
    0070 79                  508 	ld	a,c
-   0071 F5                  509 	push	af
-   0072 33                  510 	inc	sp
-                            511 ; genCall
-   0073 CD 14 00            512 	call	_detecSurface
-   0076 4B                  513 	ld	c,e
-   0077 E8 01               514 	lda	sp,1(sp)
-                            515 ;	main.c 66
-                            516 ; genCmpGt
-   0079 1E 7F               517 	ld	e,#0x7F
-   007B 79                  518 	ld	a,c
-   007C EE 80               519 	xor	a,#0x80
-   007E 57                  520 	ld	d,a
-   007F 7B                  521 	ld	a,e
-   0080 9A                  522 	sbc	a,d
-   0081 D2 A0 00            523 	jp	nc,00104$
-                            524 ;	main.c 67
-                            525 ; genAssign
-                            526 ; AOP_HL for _jumping
-   0084 21 02 00            527 	ld	hl,#_jumping + 0
-   0087 36 00               528 	ld	(hl),#0x00
-                            529 ;	main.c 68
-                            530 ; genAssign
-                            531 ; (registers are the same)
-                            532 ; genPointerGet
-   0089 11 00 00            533 	ld	de,#_playerlocation + 0
-   008C 1A                  534 	ld	a,(de)
-   008D 47                  535 	ld	b,a
-                            536 ; genIpush
-   008E 79                  537 	ld	a,c
-   008F F5                  538 	push	af
-   0090 33                  539 	inc	sp
-                            540 ; genIpush
-   0091 78                  541 	ld	a,b
-   0092 F5                  542 	push	af
-   0093 33                  543 	inc	sp
-                            544 ; genIpush
-   0094 3E 00               545 	ld	a,#0x00
-   0096 F5                  546 	push	af
-   0097 33                  547 	inc	sp
-                            548 ; genCall
-   0098 CD 00 00            549 	call	_move_sprite
-   009B E8 03               550 	lda	sp,3(sp)
-                            551 ; genGoto
-   009D C3 BB 00            552 	jp	00106$
-                            553 ; genLabel
-   00A0                     554 00104$:
-                            555 ;	main.c 70
-                            556 ; genPointerGet
-                            557 ; AOP_STK for _jump_sloc1_1_0
-   00A0 F8 00               558 	lda	hl,0(sp)
-   00A2 5E                  559 	ld	e,(hl)
-   00A3 23                  560 	inc	hl
-   00A4 56                  561 	ld	d,(hl)
-   00A5 1A                  562 	ld	a,(de)
-   00A6 4F                  563 	ld	c,a
-                            564 ; genPointerGet
-   00A7 11 00 00            565 	ld	de,#_playerlocation + 0
-   00AA 1A                  566 	ld	a,(de)
-   00AB 47                  567 	ld	b,a
-                            568 ; genIpush
-   00AC 79                  569 	ld	a,c
-   00AD F5                  570 	push	af
-   00AE 33                  571 	inc	sp
-                            572 ; genIpush
-   00AF 78                  573 	ld	a,b
-   00B0 F5                  574 	push	af
-   00B1 33                  575 	inc	sp
-                            576 ; genIpush
-   00B2 3E 00               577 	ld	a,#0x00
-   00B4 F5                  578 	push	af
-   00B5 33                  579 	inc	sp
-                            580 ; genCall
-   00B6 CD 00 00            581 	call	_move_sprite
-   00B9 E8 03               582 	lda	sp,3(sp)
-                            583 ; genLabel
-   00BB                     584 00106$:
-                            585 ; genEndFunction
-   00BB E8 03               586 	lda	sp,3(sp)
-   00BD C1                  587 	pop	bc
-   00BE C9                  588 	ret
-   00BF                     589 ___jump_end:
-                            590 ;	main.c 75
-                            591 ; genLabel
-                            592 ; genFunction
-                            593 ;	---------------------------------
-                            594 ; Function main
-                            595 ; ---------------------------------
-   00BF                     596 ___main_start:
-   00BF                     597 _main:
-   00BF C5                  598 	push	bc
-                            599 	
-                            600 ;	main.c 76
-                            601 ; genAssign (pointer)
-   00C0 11 00 00            602 	ld	de,#_playerlocation + 0
-   00C3 3E 54               603 	ld	a,#0x54
-   00C5 12                  604 	ld	(de),a
-                            605 ;	main.c 77
-                            606 ; genPlus
-                            607 ; genPlusIncr
-   00C6 11 01 00            608 	ld	de,#_playerlocation + 0 + 1
-                            609 ; genAssign
-                            610 ; AOP_HL for _floorYPos
-   00C9 21 05 00            611 	ld	hl,#_floorYPos + 0
-   00CC 4E                  612 	ld	c,(hl)
-                            613 ; genAssign (pointer)
-   00CD 79                  614 	ld	a,c
-   00CE 12                  615 	ld	(de),a
-                            616 ;	main.c 78
-                            617 ; genAssign
-                            618 ; AOP_HL for _jumping
-   00CF 21 02 00            619 	ld	hl,#_jumping + 0
-   00D2 36 00               620 	ld	(hl),#0x00
-                            621 ;	main.c 80
-                            622 ; genIpush
-   00D4 21 06 00            623 	ld	hl,#_Hero + 0
-   00D7 E5                  624 	push	hl
-                            625 ; genIpush
-   00D8 3E 02               626 	ld	a,#0x02
-   00DA F5                  627 	push	af
-   00DB 33                  628 	inc	sp
-                            629 ; genIpush
-   00DC 3E 00               630 	ld	a,#0x00
-   00DE F5                  631 	push	af
-   00DF 33                  632 	inc	sp
-                            633 ; genCall
-   00E0 CD 00 00            634 	call	_set_sprite_data
-   00E3 E8 04               635 	lda	sp,4(sp)
-                            636 ;	main.c 81
-                            637 ; genIpush
-   00E5 3E 00               638 	ld	a,#0x00
-   00E7 F5                  639 	push	af
-   00E8 33                  640 	inc	sp
-                            641 ; genIpush
-   00E9 3E 00               642 	ld	a,#0x00
-   00EB F5                  643 	push	af
-   00EC 33                  644 	inc	sp
-                            645 ; genCall
-   00ED CD 00 00            646 	call	_set_sprite_tile
-   00F0 E8 02               647 	lda	sp,2(sp)
-                            648 ;	main.c 82
-                            649 ; genPointerGet
-   00F2 11 00 00            650 	ld	de,#_playerlocation + 0
-   00F5 1A                  651 	ld	a,(de)
-   00F6 47                  652 	ld	b,a
-                            653 ; genIpush
-   00F7 79                  654 	ld	a,c
-   00F8 F5                  655 	push	af
-   00F9 33                  656 	inc	sp
+   0071 12                  509 	ld	(de),a
+                            510 ;	main.c 63
+                            511 ; genIpush
+   0072 79                  512 	ld	a,c
+   0073 F5                  513 	push	af
+   0074 33                  514 	inc	sp
+                            515 ; genCall
+   0075 CD 14 00            516 	call	_detecSurface
+   0078 4B                  517 	ld	c,e
+   0079 E8 01               518 	lda	sp,1(sp)
+                            519 ;	main.c 65
+                            520 ; genCmpGt
+   007B 1E 7F               521 	ld	e,#0x7F
+   007D 79                  522 	ld	a,c
+   007E EE 80               523 	xor	a,#0x80
+   0080 57                  524 	ld	d,a
+   0081 7B                  525 	ld	a,e
+   0082 9A                  526 	sbc	a,d
+   0083 D2 A5 00            527 	jp	nc,00104$
+                            528 ;	main.c 66
+                            529 ; genAssign
+                            530 ; AOP_HL for _jumping
+   0086 21 02 00            531 	ld	hl,#_jumping + 0
+   0089 36 00               532 	ld	(hl),#0x00
+                            533 ;	main.c 67
+                            534 ; genAssign
+                            535 ; (registers are the same)
+                            536 ; genAssign
+                            537 ; AOP_STK for 
+   008B F8 08               538 	lda	hl,8(sp)
+   008D 5E                  539 	ld	e,(hl)
+   008E 23                  540 	inc	hl
+   008F 56                  541 	ld	d,(hl)
+                            542 ; genPointerGet
+   0090 1A                  543 	ld	a,(de)
+   0091 47                  544 	ld	b,a
+                            545 ; genIpush
+   0092 79                  546 	ld	a,c
+   0093 F5                  547 	push	af
+   0094 33                  548 	inc	sp
+                            549 ; genIpush
+   0095 78                  550 	ld	a,b
+   0096 F5                  551 	push	af
+   0097 33                  552 	inc	sp
+                            553 ; genIpush
+                            554 ; AOP_STK for 
+   0098 2B                  555 	dec	hl
+   0099 2B                  556 	dec	hl
+   009A 7E                  557 	ld	a,(hl)
+   009B F5                  558 	push	af
+   009C 33                  559 	inc	sp
+                            560 ; genCall
+   009D CD 00 00            561 	call	_move_sprite
+   00A0 E8 03               562 	lda	sp,3(sp)
+                            563 ; genGoto
+   00A2 C3 C3 00            564 	jp	00106$
+                            565 ; genLabel
+   00A5                     566 00104$:
+                            567 ;	main.c 69
+                            568 ; genPointerGet
+                            569 ; AOP_STK for _jump_sloc1_1_0
+   00A5 F8 00               570 	lda	hl,0(sp)
+   00A7 5E                  571 	ld	e,(hl)
+   00A8 23                  572 	inc	hl
+   00A9 56                  573 	ld	d,(hl)
+   00AA 1A                  574 	ld	a,(de)
+   00AB 4F                  575 	ld	c,a
+                            576 ; genAssign
+                            577 ; AOP_STK for 
+   00AC F8 08               578 	lda	hl,8(sp)
+   00AE 5E                  579 	ld	e,(hl)
+   00AF 23                  580 	inc	hl
+   00B0 56                  581 	ld	d,(hl)
+                            582 ; genPointerGet
+   00B1 1A                  583 	ld	a,(de)
+   00B2 47                  584 	ld	b,a
+                            585 ; genIpush
+   00B3 79                  586 	ld	a,c
+   00B4 F5                  587 	push	af
+   00B5 33                  588 	inc	sp
+                            589 ; genIpush
+   00B6 78                  590 	ld	a,b
+   00B7 F5                  591 	push	af
+   00B8 33                  592 	inc	sp
+                            593 ; genIpush
+                            594 ; AOP_STK for 
+   00B9 2B                  595 	dec	hl
+   00BA 2B                  596 	dec	hl
+   00BB 7E                  597 	ld	a,(hl)
+   00BC F5                  598 	push	af
+   00BD 33                  599 	inc	sp
+                            600 ; genCall
+   00BE CD 00 00            601 	call	_move_sprite
+   00C1 E8 03               602 	lda	sp,3(sp)
+                            603 ; genLabel
+   00C3                     604 00106$:
+                            605 ; genEndFunction
+   00C3 E8 03               606 	lda	sp,3(sp)
+   00C5 C1                  607 	pop	bc
+   00C6 C9                  608 	ret
+   00C7                     609 ___jump_end:
+                            610 ;	main.c 74
+                            611 ; genLabel
+                            612 ; genFunction
+                            613 ;	---------------------------------
+                            614 ; Function main
+                            615 ; ---------------------------------
+   00C7                     616 ___main_start:
+   00C7                     617 _main:
+   00C7 C5                  618 	push	bc
+                            619 	
+                            620 ;	main.c 75
+                            621 ; genAssign (pointer)
+   00C8 11 00 00            622 	ld	de,#_playerlocation + 0
+   00CB 3E 54               623 	ld	a,#0x54
+   00CD 12                  624 	ld	(de),a
+                            625 ;	main.c 76
+                            626 ; genPlus
+                            627 ; genPlusIncr
+   00CE 11 01 00            628 	ld	de,#_playerlocation + 0 + 1
+                            629 ; genAssign
+                            630 ; AOP_HL for _floorYPos
+   00D1 21 05 00            631 	ld	hl,#_floorYPos + 0
+   00D4 4E                  632 	ld	c,(hl)
+                            633 ; genAssign (pointer)
+   00D5 79                  634 	ld	a,c
+   00D6 12                  635 	ld	(de),a
+                            636 ;	main.c 77
+                            637 ; genAssign
+                            638 ; AOP_HL for _jumping
+   00D7 21 02 00            639 	ld	hl,#_jumping + 0
+   00DA 36 00               640 	ld	(hl),#0x00
+                            641 ;	main.c 80
+                            642 ; genIpush
+   00DC 21 06 00            643 	ld	hl,#_Hero + 0
+   00DF E5                  644 	push	hl
+                            645 ; genIpush
+   00E0 3E 02               646 	ld	a,#0x02
+   00E2 F5                  647 	push	af
+   00E3 33                  648 	inc	sp
+                            649 ; genIpush
+   00E4 3E 00               650 	ld	a,#0x00
+   00E6 F5                  651 	push	af
+   00E7 33                  652 	inc	sp
+                            653 ; genCall
+   00E8 CD 00 00            654 	call	_set_sprite_data
+   00EB E8 04               655 	lda	sp,4(sp)
+                            656 ;	main.c 81
                             657 ; genIpush
-   00FA 78                  658 	ld	a,b
-   00FB F5                  659 	push	af
-   00FC 33                  660 	inc	sp
+   00ED 3E 00               658 	ld	a,#0x00
+   00EF F5                  659 	push	af
+   00F0 33                  660 	inc	sp
                             661 ; genIpush
-   00FD 3E 00               662 	ld	a,#0x00
-   00FF F5                  663 	push	af
-   0100 33                  664 	inc	sp
+   00F1 3E 00               662 	ld	a,#0x00
+   00F3 F5                  663 	push	af
+   00F4 33                  664 	inc	sp
                             665 ; genCall
-   0101 CD 00 00            666 	call	_move_sprite
-   0104 E8 03               667 	lda	sp,3(sp)
-                            668 ;	main.c 84
-                            669 ; genOr
-                            670 ; AOP_SFR for _LCDC_REG
-                            671 ; Type res[4] = l[4]&r[1]
-                            672 ; Size res[1] = l[1]&r[1]
-   0106 F0 00               673 	ldh	a,(_LCDC_REG+0) ; x
-   0108 F6 80               674 	or	a,#0x80
-   010A E0 00               675 	ldh	(_LCDC_REG+0),a
-                            676 ;	main.c 85
-                            677 ; genOr
-                            678 ; AOP_SFR for _LCDC_REG
-                            679 ; Type res[4] = l[4]&r[1]
-                            680 ; Size res[1] = l[1]&r[1]
-   010C F0 00               681 	ldh	a,(_LCDC_REG+0) ; x
-   010E F6 02               682 	or	a,#0x02
-   0110 E0 00               683 	ldh	(_LCDC_REG+0),a
-                            684 ;	main.c 87
-                            685 ; genLabel
-   0112                     686 00109$:
-                            687 ;	main.c 88
-                            688 ; genCall
-   0112 CD 00 00            689 	call	_joypad
-   0115 4B                  690 	ld	c,e
-                            691 ; genAnd
-   0116 79                  692 	ld	a,c
-   0117 CB 6F               693 	bit	5,a
-   0119 C2 2A 01            694 	jp	nz,00101$
-                            695 ; genCmpEq
-                            696 ; AOP_HL for _jumping
-   011C 21 02 00            697 	ld	hl,#_jumping + 0
-   011F 7E                  698 	ld	a,(hl) ; 2
-   0120 FE 01               699 	cp	a,#0x01
-   0122 C2 27 01            700 	jp	nz,00117$
-   0125 18 03               701 	jr	00118$
-   0127                     702 00117$:
-   0127 C3 2D 01            703 	jp	00102$
-   012A                     704 00118$:
-                            705 ; genLabel
-   012A                     706 00101$:
-                            707 ;	main.c 89
-                            708 ; genCall
-   012A CD 29 00            709 	call	_jump
-                            710 ; genLabel
-   012D                     711 00102$:
-                            712 ;	main.c 91
+   00F5 CD 00 00            666 	call	_set_sprite_tile
+   00F8 E8 02               667 	lda	sp,2(sp)
+                            668 ;	main.c 82
+                            669 ; genPointerGet
+   00FA 11 00 00            670 	ld	de,#_playerlocation + 0
+   00FD 1A                  671 	ld	a,(de)
+   00FE 47                  672 	ld	b,a
+                            673 ; genIpush
+   00FF 79                  674 	ld	a,c
+   0100 F5                  675 	push	af
+   0101 33                  676 	inc	sp
+                            677 ; genIpush
+   0102 78                  678 	ld	a,b
+   0103 F5                  679 	push	af
+   0104 33                  680 	inc	sp
+                            681 ; genIpush
+   0105 3E 00               682 	ld	a,#0x00
+   0107 F5                  683 	push	af
+   0108 33                  684 	inc	sp
+                            685 ; genCall
+   0109 CD 00 00            686 	call	_move_sprite
+   010C E8 03               687 	lda	sp,3(sp)
+                            688 ;	main.c 85
+                            689 ; genIpush
+   010E 3E 01               690 	ld	a,#0x01
+   0110 F5                  691 	push	af
+   0111 33                  692 	inc	sp
+                            693 ; genIpush
+   0112 3E 01               694 	ld	a,#0x01
+   0114 F5                  695 	push	af
+   0115 33                  696 	inc	sp
+                            697 ; genCall
+   0116 CD 00 00            698 	call	_set_sprite_tile
+   0119 E8 02               699 	lda	sp,2(sp)
+                            700 ;	main.c 86
+                            701 ; genIpush
+   011B 3E 50               702 	ld	a,#0x50
+   011D F5                  703 	push	af
+   011E 33                  704 	inc	sp
+                            705 ; genIpush
+   011F 3E 40               706 	ld	a,#0x40
+   0121 F5                  707 	push	af
+   0122 33                  708 	inc	sp
+                            709 ; genIpush
+   0123 3E 01               710 	ld	a,#0x01
+   0125 F5                  711 	push	af
+   0126 33                  712 	inc	sp
                             713 ; genCall
-   012D CD 00 00            714 	call	_joypad
-   0130 4B                  715 	ld	c,e
-                            716 ; genAnd
-   0131 79                  717 	ld	a,c
-   0132 CB 4F               718 	bit	1,a
-   0134 CA 59 01            719 	jp	z,00105$
-                            720 ;	main.c 92
-                            721 ; genPointerGet
-   0137 11 00 00            722 	ld	de,#_playerlocation + 0
-   013A 1A                  723 	ld	a,(de)
-   013B 4F                  724 	ld	c,a
-                            725 ; genMinus
-   013C 79                  726 	ld	a,c
-   013D C6 FC               727 	add	a,#0xFC
-   013F 4F                  728 	ld	c,a
-                            729 ; genAssign (pointer)
-   0140 11 00 00            730 	ld	de,#_playerlocation + 0
-   0143 79                  731 	ld	a,c
-   0144 12                  732 	ld	(de),a
-                            733 ;	main.c 93
-                            734 ; genPlus
-                            735 ; genPlusIncr
-   0145 11 01 00            736 	ld	de,#_playerlocation + 0 + 1
-                            737 ; genPointerGet
-   0148 1A                  738 	ld	a,(de)
-   0149 47                  739 	ld	b,a
-                            740 ; genIpush
-   014A 78                  741 	ld	a,b
-   014B F5                  742 	push	af
-   014C 33                  743 	inc	sp
-                            744 ; genIpush
-   014D 79                  745 	ld	a,c
-   014E F5                  746 	push	af
-   014F 33                  747 	inc	sp
-                            748 ; genIpush
-   0150 3E 00               749 	ld	a,#0x00
-   0152 F5                  750 	push	af
-   0153 33                  751 	inc	sp
-                            752 ; genCall
-   0154 CD 00 00            753 	call	_move_sprite
-   0157 E8 03               754 	lda	sp,3(sp)
-                            755 ; genLabel
-   0159                     756 00105$:
-                            757 ;	main.c 95
-                            758 ; genCall
-   0159 CD 00 00            759 	call	_joypad
-   015C 4B                  760 	ld	c,e
-                            761 ; genAnd
-   015D 79                  762 	ld	a,c
-   015E CB 47               763 	bit	0,a
-   0160 CA 85 01            764 	jp	z,00107$
-                            765 ;	main.c 96
-                            766 ; genPointerGet
-   0163 11 00 00            767 	ld	de,#_playerlocation + 0
-   0166 1A                  768 	ld	a,(de)
-   0167 4F                  769 	ld	c,a
-                            770 ; genPlus
-                            771 ; genPlusIncr
-   0168 0C                  772 	inc	c
-   0169 0C                  773 	inc	c
-   016A 0C                  774 	inc	c
-   016B 0C                  775 	inc	c
-                            776 ; genAssign (pointer)
-   016C 11 00 00            777 	ld	de,#_playerlocation + 0
-   016F 79                  778 	ld	a,c
-   0170 12                  779 	ld	(de),a
-                            780 ;	main.c 97
-                            781 ; genPlus
-                            782 ; genPlusIncr
-   0171 11 01 00            783 	ld	de,#_playerlocation + 0 + 1
-                            784 ; genPointerGet
-   0174 1A                  785 	ld	a,(de)
-   0175 47                  786 	ld	b,a
-                            787 ; genIpush
-   0176 78                  788 	ld	a,b
-   0177 F5                  789 	push	af
-   0178 33                  790 	inc	sp
-                            791 ; genIpush
-   0179 79                  792 	ld	a,c
-   017A F5                  793 	push	af
-   017B 33                  794 	inc	sp
-                            795 ; genIpush
-   017C 3E 00               796 	ld	a,#0x00
-   017E F5                  797 	push	af
-   017F 33                  798 	inc	sp
-                            799 ; genCall
-   0180 CD 00 00            800 	call	_move_sprite
-   0183 E8 03               801 	lda	sp,3(sp)
-                            802 ; genLabel
-   0185                     803 00107$:
-                            804 ;	main.c 100
-                            805 ; genIpush
-   0185 3E 05               806 	ld	a,#0x05
-   0187 F5                  807 	push	af
-   0188 33                  808 	inc	sp
-                            809 ; genCall
-   0189 CD 00 00            810 	call	_perfDelay
-   018C E8 01               811 	lda	sp,1(sp)
-                            812 ; genGoto
-   018E C3 12 01            813 	jp	00109$
-                            814 ; genLabel
-   0191                     815 00111$:
-                            816 ; genEndFunction
-                            817 	
-   0191 C1                  818 	pop	bc
-   0192 C9                  819 	ret
-   0193                     820 ___main_end:
-                            821 	.area _CODE
+   0127 CD 00 00            714 	call	_move_sprite
+   012A E8 03               715 	lda	sp,3(sp)
+                            716 ;	main.c 88
+                            717 ; genOr
+                            718 ; AOP_SFR for _LCDC_REG
+                            719 ; Type res[4] = l[4]&r[1]
+                            720 ; Size res[1] = l[1]&r[1]
+   012C F0 00               721 	ldh	a,(_LCDC_REG+0) ; x
+   012E F6 80               722 	or	a,#0x80
+   0130 E0 00               723 	ldh	(_LCDC_REG+0),a
+                            724 ;	main.c 89
+                            725 ; genOr
+                            726 ; AOP_SFR for _LCDC_REG
+                            727 ; Type res[4] = l[4]&r[1]
+                            728 ; Size res[1] = l[1]&r[1]
+   0132 F0 00               729 	ldh	a,(_LCDC_REG+0) ; x
+   0134 F6 02               730 	or	a,#0x02
+   0136 E0 00               731 	ldh	(_LCDC_REG+0),a
+                            732 ;	main.c 91
+                            733 ; genLabel
+   0138                     734 00109$:
+                            735 ;	main.c 93
+                            736 ; genCall
+   0138 CD 00 00            737 	call	_joypad
+   013B 4B                  738 	ld	c,e
+                            739 ; genAnd
+   013C 79                  740 	ld	a,c
+   013D CB 6F               741 	bit	5,a
+   013F C2 50 01            742 	jp	nz,00101$
+                            743 ; genCmpEq
+                            744 ; AOP_HL for _jumping
+   0142 21 02 00            745 	ld	hl,#_jumping + 0
+   0145 7E                  746 	ld	a,(hl) ; 2
+   0146 FE 01               747 	cp	a,#0x01
+   0148 C2 4D 01            748 	jp	nz,00117$
+   014B 18 03               749 	jr	00118$
+   014D                     750 00117$:
+   014D C3 5D 01            751 	jp	00102$
+   0150                     752 00118$:
+                            753 ; genLabel
+   0150                     754 00101$:
+                            755 ;	main.c 94
+                            756 ; genIpush
+   0150 21 00 00            757 	ld	hl,#_playerlocation + 0
+   0153 E5                  758 	push	hl
+                            759 ; genIpush
+   0154 3E 00               760 	ld	a,#0x00
+   0156 F5                  761 	push	af
+   0157 33                  762 	inc	sp
+                            763 ; genCall
+   0158 CD 29 00            764 	call	_jump
+   015B E8 03               765 	lda	sp,3(sp)
+                            766 ; genLabel
+   015D                     767 00102$:
+                            768 ;	main.c 96
+                            769 ; genCall
+   015D CD 00 00            770 	call	_joypad
+   0160 4B                  771 	ld	c,e
+                            772 ; genAnd
+   0161 79                  773 	ld	a,c
+   0162 CB 4F               774 	bit	1,a
+   0164 CA 89 01            775 	jp	z,00105$
+                            776 ;	main.c 97
+                            777 ; genPointerGet
+   0167 11 00 00            778 	ld	de,#_playerlocation + 0
+   016A 1A                  779 	ld	a,(de)
+   016B 4F                  780 	ld	c,a
+                            781 ; genMinus
+   016C 79                  782 	ld	a,c
+   016D C6 FC               783 	add	a,#0xFC
+   016F 4F                  784 	ld	c,a
+                            785 ; genAssign (pointer)
+   0170 11 00 00            786 	ld	de,#_playerlocation + 0
+   0173 79                  787 	ld	a,c
+   0174 12                  788 	ld	(de),a
+                            789 ;	main.c 98
+                            790 ; genPlus
+                            791 ; genPlusIncr
+   0175 11 01 00            792 	ld	de,#_playerlocation + 0 + 1
+                            793 ; genPointerGet
+   0178 1A                  794 	ld	a,(de)
+   0179 47                  795 	ld	b,a
+                            796 ; genIpush
+   017A 78                  797 	ld	a,b
+   017B F5                  798 	push	af
+   017C 33                  799 	inc	sp
+                            800 ; genIpush
+   017D 79                  801 	ld	a,c
+   017E F5                  802 	push	af
+   017F 33                  803 	inc	sp
+                            804 ; genIpush
+   0180 3E 00               805 	ld	a,#0x00
+   0182 F5                  806 	push	af
+   0183 33                  807 	inc	sp
+                            808 ; genCall
+   0184 CD 00 00            809 	call	_move_sprite
+   0187 E8 03               810 	lda	sp,3(sp)
+                            811 ; genLabel
+   0189                     812 00105$:
+                            813 ;	main.c 100
+                            814 ; genCall
+   0189 CD 00 00            815 	call	_joypad
+   018C 4B                  816 	ld	c,e
+                            817 ; genAnd
+   018D 79                  818 	ld	a,c
+   018E CB 47               819 	bit	0,a
+   0190 CA B5 01            820 	jp	z,00107$
+                            821 ;	main.c 101
+                            822 ; genPointerGet
+   0193 11 00 00            823 	ld	de,#_playerlocation + 0
+   0196 1A                  824 	ld	a,(de)
+   0197 4F                  825 	ld	c,a
+                            826 ; genPlus
+                            827 ; genPlusIncr
+   0198 0C                  828 	inc	c
+   0199 0C                  829 	inc	c
+   019A 0C                  830 	inc	c
+   019B 0C                  831 	inc	c
+                            832 ; genAssign (pointer)
+   019C 11 00 00            833 	ld	de,#_playerlocation + 0
+   019F 79                  834 	ld	a,c
+   01A0 12                  835 	ld	(de),a
+                            836 ;	main.c 102
+                            837 ; genPlus
+                            838 ; genPlusIncr
+   01A1 11 01 00            839 	ld	de,#_playerlocation + 0 + 1
+                            840 ; genPointerGet
+   01A4 1A                  841 	ld	a,(de)
+   01A5 47                  842 	ld	b,a
+                            843 ; genIpush
+   01A6 78                  844 	ld	a,b
+   01A7 F5                  845 	push	af
+   01A8 33                  846 	inc	sp
+                            847 ; genIpush
+   01A9 79                  848 	ld	a,c
+   01AA F5                  849 	push	af
+   01AB 33                  850 	inc	sp
+                            851 ; genIpush
+   01AC 3E 00               852 	ld	a,#0x00
+   01AE F5                  853 	push	af
+   01AF 33                  854 	inc	sp
+                            855 ; genCall
+   01B0 CD 00 00            856 	call	_move_sprite
+   01B3 E8 03               857 	lda	sp,3(sp)
+                            858 ; genLabel
+   01B5                     859 00107$:
+                            860 ;	main.c 105
+                            861 ; genIpush
+   01B5 3E 05               862 	ld	a,#0x05
+   01B7 F5                  863 	push	af
+   01B8 33                  864 	inc	sp
+                            865 ; genCall
+   01B9 CD 00 00            866 	call	_perfDelay
+   01BC E8 01               867 	lda	sp,1(sp)
+                            868 ; genGoto
+   01BE C3 38 01            869 	jp	00109$
+                            870 ; genLabel
+   01C1                     871 00111$:
+                            872 ; genEndFunction
+                            873 	
+   01C1 C1                  874 	pop	bc
+   01C2 C9                  875 	ret
+   01C3                     876 ___main_end:
+                            877 	.area _CODE
 ASxxxx Assembler V01.75  (GameBoy Z80-like CPU), page 1.
 
 Symbol Table
@@ -881,10 +937,10 @@ Symbol Table
     _WY_REG                            **** GX
   0 ___detecSurface_end                0029 R
   0 ___detecSurface_start              0014 R
-  0 ___jump_end                        00BF R
+  0 ___jump_end                        00C7 R
   0 ___jump_start                      0029 R
-  0 ___main_end                        0193 R
-  0 ___main_start                      00BF R
+  0 ___main_end                        01C3 R
+  0 ___main_start                      00C7 R
   0 ___perfDelay_end                   0014 R
   0 ___perfDelay_start                 0000 R
     __cpu                              **** GX
@@ -898,7 +954,7 @@ Symbol Table
     _joypad                            **** GX
   0 _jump                              0029 GR
   1 _jumping                           0002 GR
-  0 _main                              00BF GR
+  0 _main                              00C7 GR
     _move_sprite                       **** GX
   0 _perfDelay                         0000 GR
   1 _playerlocation                    0000 GR
@@ -911,7 +967,7 @@ Symbol Table
 
 Area Table
 
-   0 _CODE                              size  193   flags 0
+   0 _CODE                              size  1C3   flags 0
    1 _DATA                              size   26   flags 0
    2 _OVERLAY                           size    0   flags 0
    3 _ISEG                              size    0   flags 0
