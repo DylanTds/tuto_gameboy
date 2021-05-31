@@ -1,9 +1,15 @@
 #include <gb/gb.h>
 #include <stdio.h>
 #include <gb/font.h>
+
+#include "HeroSprite.c"
+
 #include "WM_startscreen.c"
 #include "WM_commandscreen.c"
 #include "WM_msgbox.c"
+
+#include "BackgroundTiles.c"
+#include "BackgroundMap.c"
 
 BYTE started;       // jeu demarre ou non
 BYTE paused;        // jeu en pause ou non
@@ -14,15 +20,8 @@ UINT8 playerlocation[2];
 UINT8 currSpeedY;
 UINT8 gravity = -2;
 
-// sprite hero
-unsigned char Hero[] =
-{
-  0xFF,0xFF,0xFF,0x81,0xFF,0xA5,0xFF,0xC3,
-  0x66,0x5A,0xFF,0x81,0x7E,0x42,0x7E,0x7E,
-  0x7E,0x7E,0xFF,0x81,0xFF,0xA5,0xFF,0xA5,
-  0xFF,0xC3,0x7E,0x5A,0xFF,0x99,0x7E,0x42
-};
-
+INT8 roll;         // compteur pour les roues du skate
+INT8 rollDirect;   // orientation des roues du skate
 
 void perfDelay(UINT8 numloops){
     UINT8 i;
@@ -39,15 +38,17 @@ void perfDelay(UINT8 numloops){
 */
 void checkScreenLimit(){
         // si le sprite est dans l'ecran..
-    if( (8  < playerlocation[0]) && (playerlocation[0] < 160) &&
+    if( (56  < playerlocation[0]) && (playerlocation[0] < 104) &&
         (16 < playerlocation[1]) && (playerlocation[1] < 152) ){ 
         // ne rien faire
     }else{                              // si le sprite sort de l'ecran..
-        if(playerlocation[0] < 8){      // rep. du coté gauche de l'ecran (8px)
-            playerlocation[0] = 8;
+        if(playerlocation[0] < 56){      // rep. du coté gauche de l'ecran (8px)
+            playerlocation[0] = 56;
+            scroll_bkg(-4,0);
         }
-        if(playerlocation[0] > 160){    // rep. du coté droit de l'ecran (160px)
-            playerlocation[0] = 160;
+        if(playerlocation[0] > 104){    // rep. du coté droit de l'ecran (160px)
+            playerlocation[0] = 104;
+            scroll_bkg(4,0);
         }
         if(playerlocation[1] < 16){      // rep. en haut de l'ecran (8 +8px)
             playerlocation[1] = 16;
@@ -93,14 +94,14 @@ void main(){
 
         // initialisation des valeurs
         playerlocation[0]   = 84;
-        playerlocation[1]   = 80;
+        playerlocation[1]   = 100;
         jumping             = 0;
             
-        // sprite HERO
-        set_sprite_data(0, 2, Hero);
-        set_sprite_tile(0, 0);
-        // sprite Dude01
-        set_sprite_tile(1, 1);
+        // chargement des sprite HERO
+        set_sprite_data(0, 10, Hero);
+        set_sprite_tile(0, 0);      // sprite HERO
+        set_sprite_tile(1, 2);      // sprite skate01
+        set_sprite_tile(2, 3);      // sprite skate02
 
         if(joypad() & J_START){    
             started = 1;            // jeu demarre      : oui
@@ -109,12 +110,14 @@ void main(){
             perfDelay(10);
         }
 
+        roll = 0;                   // compteur pour les roues du skate
+
         while(started == 1){
             while(paused == 1){
                 // position : (0,0) | taille : 20*18 tiles | WM_commandscreen
                 set_win_tiles(0, 0, 20, 18, WM_commandscreen);  // Menu Pause
                 move_win(7,0);
-                
+
                 perfDelay(10);
 
                 if(joypad() & J_SELECT){    // Select -> quitter vers l'ecran titre
@@ -127,16 +130,16 @@ void main(){
                     SHOW_SPRITES;
                     move_win(07,104);        // (144 - (8px * 5tiles))
                 }
-                
             }
-
-
+            
             // Partie en cours.. 
             // position : (0,0) | taille : 20*5 tiles | WM_msgbox
             set_win_tiles(0, 0, 20, 18, WM_msgbox);  // boite de dialogue
             
-            // affichage sprite Dude01
-            move_sprite(1, 64, 80);
+            // charge 40 tiles mais decale de 38eme places a cause de la police
+            set_bkg_data(38, 40, BackgroundTiles);
+            // position : (0,0) | taille : 32*18 tiles | BackgroundMap
+            set_bkg_tiles(0, 0, 32, 18, BackgroundMap);
 
             // Commandes
             if(joypad() & J_UP){
@@ -147,9 +150,11 @@ void main(){
             }
             if(joypad() & J_LEFT){
                 playerlocation[0] -= 4;
+                rollDirect = -1;
             }
             if(joypad() & J_RIGHT){
                playerlocation[0] += 4;
+                rollDirect = 1;
             }
             if(joypad() & J_A){
                 // rien.
@@ -164,12 +169,44 @@ void main(){
             if(joypad() & J_SELECT){
                 // rien.
             }
+            
+            // animation des roues du skate
+            if(rollDirect==1){
+                if( (roll < 6) && (roll >= 0) ){
+                    roll += 2;
+                    set_sprite_tile(1, (roll+2));      // sprite skate01
+                    set_sprite_tile(2, (roll+3));      // sprite skate02
+                }else{
+                    roll = 0;
+                    set_sprite_tile(1, 2);      // sprite skate01
+                    set_sprite_tile(2, 3);      // sprite skate02
+                }
+            }
+            if(rollDirect==-1){
+                if( (roll > -6) && (roll <= 0) ){
+                    roll -= 2;
+                    set_sprite_tile(1, (roll+8));      // sprite skate01
+                    set_sprite_tile(2, (roll+9));      // sprite skate02
+                }else{
+                    roll = 0;
+                    set_sprite_tile(1, 8);      // sprite skate01
+                    set_sprite_tile(2, 9);      // sprite skate02
+                }
+            }
+
+            
+
+            
 
             // Verification et repositionnement du sprite Hero
             checkScreenLimit();
             move_sprite(0, playerlocation[0], playerlocation[1]);
 
-            perfDelay(5);
+            // affichage sprite skate01 et skate02 par rapport au Hero
+            move_sprite(1, (playerlocation[0]-4), (playerlocation[1]+8));
+            move_sprite(2, (playerlocation[0]+4), (playerlocation[1]+8));
+
+            perfDelay(2);
         }
 
     }
