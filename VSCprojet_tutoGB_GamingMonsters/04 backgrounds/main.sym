@@ -9,16 +9,16 @@
 00:03FC s__BASE
 00:0571 s__LIT
 00:0571 s__GSINIT
-00:1951 s__GSINITTAIL
-00:1952 s__GSFINAL
+00:15F1 s__GSINITTAIL
+00:15F2 s__GSFINAL
 00:C000 .OAM
 00:C0A0 s__DATA
-00:C3F0 s__BSS
-00:C449 s__HEAP
-00:C449 s__BSEG
-00:C449 s__ISEG
-00:C449 s__XSEG
-00:C449 s__OVERLAY
+00:C360 s__BSS
+00:C3B9 s__HEAP
+00:C3B9 s__BSEG
+00:C3B9 s__ISEG
+00:C3B9 s__XSEG
+00:C3B9 s__OVERLAY
 00:E000 .STACK
 00:FF80 .refresh_OAM
 ; Area: _CODE
@@ -89,22 +89,22 @@
 00:C0A0 _BackgroundTiles
 00:C120 _BackgroundMap
 ; Area: _BSS
-00:C3F0 __cpu
-00:C3F1 .mode
-00:C3F2 __io_out
-00:C3F3 __io_in
-00:C3F4 __io_status
-00:C3F5 .vbl_done
-00:C3F6 __current_bank
-00:C3F7 _sys_time
-00:C3F7 .sys_time
-00:C3F9 .int_0x40
-00:C409 .int_0x48
-00:C419 .int_0x50
-00:C429 .int_0x58
-00:C439 .int_0x60
+00:C360 __cpu
+00:C361 .mode
+00:C362 __io_out
+00:C363 __io_in
+00:C364 __io_status
+00:C365 .vbl_done
+00:C366 __current_bank
+00:C367 _sys_time
+00:C367 .sys_time
+00:C369 .int_0x40
+00:C379 .int_0x48
+00:C389 .int_0x50
+00:C399 .int_0x58
+00:C3A9 .int_0x60
 ; Area: _HEAP
-00:C449 _malloc_heap_start
+00:C3B9 _malloc_heap_start
 ; Area: _OVERLAY
 ; Area: _ISEG
 ; Area: _BSEG

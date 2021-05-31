@@ -24,21 +24,21 @@ AREA .  .ABS.
 		l__HEADER	01E1
 		s__CODE	0200
 		s__HOME	0250
-		l__DATA	0350
+		l__DATA	02C0
 		s__BASE	03FC
 		s__LIT	0571
 		s__GSINIT	0571
-		l__GSINIT	13E0
-		s__GSINITTAIL	1951
-		s__GSFINAL	1952
+		l__GSINIT	1080
+		s__GSINITTAIL	15F1
+		s__GSFINAL	15F2
 		.OAM	C000
 		s__DATA	C0A0
-		s__BSS	C3F0
-		s__HEAP	C449
-		s__BSEG	C449
-		s__ISEG	C449
-		s__XSEG	C449
-		s__OVERLAY	C449
+		s__BSS	C360
+		s__HEAP	C3B9
+		s__BSEG	C3B9
+		s__ISEG	C3B9
+		s__XSEG	C3B9
+		s__OVERLAY	C3B9
 		.STACK	E000
 		.refresh_OAM	FF80
 		l__SFR	10000
@@ -129,73 +129,73 @@ AREA _LIT
 AREA _GSINIT
 	RADIX HEX
 	BASE 0571
-	SIZE 13E0
+	SIZE 1080
 	ATTRIB REL CON
 	GLOBALS
 		gsinit	0571
 AREA _GSINITTAIL
 	RADIX HEX
-	BASE 1951
+	BASE 15F1
 	SIZE 0001
 	ATTRIB REL CON
 AREA _GSFINAL
 	RADIX HEX
-	BASE 1952
+	BASE 15F2
 	SIZE 0000
 	ATTRIB REL CON
 AREA _DATA
 	RADIX HEX
 	BASE C0A0
-	SIZE 0350
+	SIZE 02C0
 	ATTRIB REL CON
 	GLOBALS
 		_BackgroundTiles	C0A0
 		_BackgroundMap	C120
 AREA _BSS
 	RADIX HEX
-	BASE C3F0
+	BASE C360
 	SIZE 0059
 	ATTRIB REL CON
 	GLOBALS
-		__cpu	C3F0
-		.mode	C3F1
-		__io_out	C3F2
-		__io_in	C3F3
-		__io_status	C3F4
-		.vbl_done	C3F5
-		__current_bank	C3F6
-		_sys_time	C3F7
-		.sys_time	C3F7
-		.int_0x40	C3F9
-		.int_0x48	C409
-		.int_0x50	C419
-		.int_0x58	C429
-		.int_0x60	C439
+		__cpu	C360
+		.mode	C361
+		__io_out	C362
+		__io_in	C363
+		__io_status	C364
+		.vbl_done	C365
+		__current_bank	C366
+		_sys_time	C367
+		.sys_time	C367
+		.int_0x40	C369
+		.int_0x48	C379
+		.int_0x50	C389
+		.int_0x58	C399
+		.int_0x60	C3A9
 AREA _HEAP
 	RADIX HEX
-	BASE C449
+	BASE C3B9
 	SIZE 0000
 	ATTRIB REL CON
 	GLOBALS
-		_malloc_heap_start	C449
+		_malloc_heap_start	C3B9
 AREA _OVERLAY
 	RADIX HEX
-	BASE C449
+	BASE C3B9
 	SIZE 0000
 	ATTRIB REL CON
 AREA _ISEG
 	RADIX HEX
-	BASE C449
+	BASE C3B9
 	SIZE 0000
 	ATTRIB REL CON
 AREA _BSEG
 	RADIX HEX
-	BASE C449
+	BASE C3B9
 	SIZE 0000
 	ATTRIB REL CON
 AREA _XSEG
 	RADIX HEX
-	BASE C449
+	BASE C3B9
 	SIZE 0000
 	ATTRIB REL CON
 AREA _SFR
@@ -263,7 +263,7 @@ MODULES
 	FILE c:\gbdk\lib/small/asxxxx/gb/crt0.o
 		NAME Runtime
 	FILE main.o
-		NAME lcc67520
+		NAME lcc117040
 LIBRARIES
 	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
 		MODULE sfr.o

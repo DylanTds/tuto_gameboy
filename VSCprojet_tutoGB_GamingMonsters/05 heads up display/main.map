@@ -21,24 +21,24 @@ AREA .  .ABS.
 		l__HOME	01AC
 		l__HEADER	01EB
 		s__CODE	0200
-		l__DATA	035A
+		l__DATA	02CA
 		l__CODE	0803
 		s__HOME	0A03
 		s__BASE	0BAF
-		l__GSINIT	141C
+		l__GSINIT	10BC
 		l__BASE	1BAC
 		s__LIT	275B
 		s__GSINIT	275B
-		s__GSINITTAIL	3B77
-		s__GSFINAL	3B78
+		s__GSINITTAIL	3817
+		s__GSFINAL	3818
 		.OAM	C000
 		s__DATA	C0A0
-		s__BSS	C3FA
-		s__HEAP	C47E
-		s__BSEG	C47E
-		s__ISEG	C47E
-		s__XSEG	C47E
-		s__OVERLAY	C47E
+		s__BSS	C36A
+		s__HEAP	C3EE
+		s__BSEG	C3EE
+		s__ISEG	C3EE
+		s__XSEG	C3EE
+		s__OVERLAY	C3EE
 		.STACK	E000
 		.refresh_OAM	FF80
 		l__SFR	10000
@@ -194,81 +194,81 @@ AREA _LIT
 AREA _GSINIT
 	RADIX HEX
 	BASE 275B
-	SIZE 141C
+	SIZE 10BC
 	ATTRIB REL CON
 	GLOBALS
 		gsinit	275B
 AREA _GSINITTAIL
 	RADIX HEX
-	BASE 3B77
+	BASE 3817
 	SIZE 0001
 	ATTRIB REL CON
 AREA _GSFINAL
 	RADIX HEX
-	BASE 3B78
+	BASE 3818
 	SIZE 0000
 	ATTRIB REL CON
 AREA _DATA
 	RADIX HEX
 	BASE C0A0
-	SIZE 035A
+	SIZE 02CA
 	ATTRIB REL CON
 	GLOBALS
 		_BackgroundTiles	C0A0
 		_BackgroundMap	C120
-		_WindowMap	C3F0
+		_WindowMap	C360
 AREA _BSS
 	RADIX HEX
-	BASE C3FA
+	BASE C36A
 	SIZE 0084
 	ATTRIB REL CON
 	GLOBALS
-		__cpu	C3FA
-		.mode	C3FB
-		__io_out	C3FC
-		__io_in	C3FD
-		__io_status	C3FE
-		.vbl_done	C3FF
-		__current_bank	C400
-		_sys_time	C401
-		.sys_time	C401
-		.int_0x40	C403
-		.int_0x48	C413
-		.int_0x50	C423
-		.int_0x58	C433
-		.int_0x60	C443
-		font_current	C453
-		font_first_free_tile	C456
-		font_table	C457
-		.curx	C469
-		.cury	C46A
-		.fg_colour	C46B
-		.bg_colour	C46C
+		__cpu	C36A
+		.mode	C36B
+		__io_out	C36C
+		__io_in	C36D
+		__io_status	C36E
+		.vbl_done	C36F
+		__current_bank	C370
+		_sys_time	C371
+		.sys_time	C371
+		.int_0x40	C373
+		.int_0x48	C383
+		.int_0x50	C393
+		.int_0x58	C3A3
+		.int_0x60	C3B3
+		font_current	C3C3
+		font_first_free_tile	C3C6
+		font_table	C3C7
+		.curx	C3D9
+		.cury	C3DA
+		.fg_colour	C3DB
+		.bg_colour	C3DC
 AREA _HEAP
 	RADIX HEX
-	BASE C47E
+	BASE C3EE
 	SIZE 0000
 	ATTRIB REL CON
 	GLOBALS
-		_malloc_heap_start	C47E
+		_malloc_heap_start	C3EE
 AREA _OVERLAY
 	RADIX HEX
-	BASE C47E
+	BASE C3EE
 	SIZE 0000
 	ATTRIB REL CON
 AREA _ISEG
 	RADIX HEX
-	BASE C47E
+	BASE C3EE
 	SIZE 0000
 	ATTRIB REL CON
 AREA _BSEG
 	RADIX HEX
-	BASE C47E
+	BASE C3EE
 	SIZE 0000
 	ATTRIB REL CON
 AREA _XSEG
 	RADIX HEX
-	BASE C47E
+	BASE C3EE
 	SIZE 0000
 	ATTRIB REL CON
 AREA _SFR
@@ -336,7 +336,7 @@ MODULES
 	FILE c:\gbdk\lib/small/asxxxx/gb/crt0.o
 		NAME Runtime
 	FILE main.o
-		NAME lcc12800
+		NAME lcc41960
 LIBRARIES
 	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
 		MODULE sfr.o

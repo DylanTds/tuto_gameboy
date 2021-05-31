@@ -24,13 +24,13 @@ void main(){
         sinon les tiles du background vont remplacer une partie des tiles de font
 
         on va donc changer dans la memoire de background "0" les 7 premiere tiles de "backgroundtiles"
-        mais on va les stoquer a partir de la 37eme position pour laisser tranquille les 36 tiles de font
+        mais on va les stoquer a partir de la 38eme position pour laisser tranquille les 37 tiles de font
 
-        attention, il faudra aussi re-exporter le basicBakgroundMap.c avec un "tile offset" de 37
+        attention, il faudra aussi re-exporter le basicBakgroundMap.c avec un "tile offset" de 38
     */
 
-    set_bkg_data(37, 7, BackgroundTiles);       // on charge les 7 tiles mais on stoque a partir de la 37eme place
-    set_bkg_tiles(0, 0, 40, 18, BackgroundMap);
+    set_bkg_data(38, 7, BackgroundTiles);       // on charge les 7 tiles mais on stoque a partir de la 38eme place
+    set_bkg_tiles(0, 0, 32, 18, BackgroundMap);
 
     set_win_tiles(0, 0, 8, 1, WindowMap);       // positionne la window a (0;0), avec 8*1tiles affichee et son tilesmap "WindowMap"
     move_win(7, 120);                           // le window layer n'est pas transparent, il faut le decaler sinon plus de background

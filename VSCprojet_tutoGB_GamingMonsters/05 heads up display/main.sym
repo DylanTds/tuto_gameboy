@@ -9,16 +9,16 @@
 00:0BAF s__BASE
 00:275B s__LIT
 00:275B s__GSINIT
-00:3B77 s__GSINITTAIL
-00:3B78 s__GSFINAL
+00:3817 s__GSINITTAIL
+00:3818 s__GSFINAL
 00:C000 .OAM
 00:C0A0 s__DATA
-00:C3FA s__BSS
-00:C47E s__HEAP
-00:C47E s__BSEG
-00:C47E s__ISEG
-00:C47E s__XSEG
-00:C47E s__OVERLAY
+00:C36A s__BSS
+00:C3EE s__HEAP
+00:C3EE s__BSEG
+00:C3EE s__ISEG
+00:C3EE s__XSEG
+00:C3EE s__OVERLAY
 00:E000 .STACK
 00:FF80 .refresh_OAM
 ; Area: _CODE
@@ -153,31 +153,31 @@
 ; Area: _DATA
 00:C0A0 _BackgroundTiles
 00:C120 _BackgroundMap
-00:C3F0 _WindowMap
+00:C360 _WindowMap
 ; Area: _BSS
-00:C3FA __cpu
-00:C3FB .mode
-00:C3FC __io_out
-00:C3FD __io_in
-00:C3FE __io_status
-00:C3FF .vbl_done
-00:C400 __current_bank
-00:C401 _sys_time
-00:C401 .sys_time
-00:C403 .int_0x40
-00:C413 .int_0x48
-00:C423 .int_0x50
-00:C433 .int_0x58
-00:C443 .int_0x60
-00:C453 font_current
-00:C456 font_first_free_tile
-00:C457 font_table
-00:C469 .curx
-00:C46A .cury
-00:C46B .fg_colour
-00:C46C .bg_colour
+00:C36A __cpu
+00:C36B .mode
+00:C36C __io_out
+00:C36D __io_in
+00:C36E __io_status
+00:C36F .vbl_done
+00:C370 __current_bank
+00:C371 _sys_time
+00:C371 .sys_time
+00:C373 .int_0x40
+00:C383 .int_0x48
+00:C393 .int_0x50
+00:C3A3 .int_0x58
+00:C3B3 .int_0x60
+00:C3C3 font_current
+00:C3C6 font_first_free_tile
+00:C3C7 font_table
+00:C3D9 .curx
+00:C3DA .cury
+00:C3DB .fg_colour
+00:C3DC .bg_colour
 ; Area: _HEAP
-00:C47E _malloc_heap_start
+00:C3EE _malloc_heap_start
 ; Area: _OVERLAY
 ; Area: _ISEG
 ; Area: _BSEG

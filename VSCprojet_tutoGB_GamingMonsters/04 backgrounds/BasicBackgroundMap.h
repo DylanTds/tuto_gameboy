@@ -7,8 +7,8 @@
  Info:
    Section       : 
    Bank          : 0
-   Map size      : 40 x 18
-   Tile set      : BasicBackground.gbr
+   Map size      : 32 x 18
+   Tile set      : C:\Users\Dylan\Documents\GameBoy\Renouveau\tuto_gameboy\VSCprojet_tutoGB_GamingMonsters\04 backgrounds\BasicBackground.gbr
    Plane count   : 1 plane (8 bits)
    Plane order   : Tiles are continues
    Tile offset   : 0
@@ -18,7 +18,7 @@
 
 */
 
-#define BackgroundMapWidth 40
+#define BackgroundMapWidth 32
 #define BackgroundMapHeight 18
 #define BackgroundMapBank 0
 
