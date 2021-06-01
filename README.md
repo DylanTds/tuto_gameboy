@@ -10,4 +10,4 @@ De temps en temps je fait une pause pour tester ce que j'ai appris en l'appliqua
 Temps pour les videos 1-8 : 8h32.  
 Temps pour "08 bilan perso" : 8h25.  
 
-+5h03.
++5h23.
