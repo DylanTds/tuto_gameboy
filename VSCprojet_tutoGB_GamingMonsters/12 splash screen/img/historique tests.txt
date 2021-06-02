@@ -1,0 +1,17 @@
+01 desature
+02 4 couleurs en mode normal
+03 160x144
+
+resultat ok mais manque de détails ?
+rends bien sur emulateur
+
+
+11 160x144
+12 desature
+13 4couleurs en mode index position
+
+resultat moche mais plus de finesse
+rends bien sur GB/GBC
+
+
+La convertion avec GameboyPngConverter passe nickel !
