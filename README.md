@@ -12,3 +12,4 @@ Temps pour "08 bilan perso" : 8h25.
 
 +5h23.
 +2h36.
++1h18.
