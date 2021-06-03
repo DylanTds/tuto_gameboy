@@ -1,6 +1,6 @@
 # Echauffement prog GameBoy en C
   
-Temps tt investi à apprendre avec les video : 8h32  
+Temps tt investi à apprendre avec les video : 17h54  
 Temps tt investi à tester mes connaissances : 8h25  
   
 Réalisation des 23 videos de la chaine Youtube "GamingMonsters" pour me remettre dans la programmation de jeu sur Gameboy en language C.  
@@ -10,4 +10,5 @@ De temps en temps je fait une pause pour tester ce que j'ai appris en l'appliqua
 Temps pour les videos 1-8 : 8h32.  
 Temps pour "08 bilan perso" : 8h25.  
 
-+9h17.
+Temps pour les videos 9-14 : 17h22.
++0h00.  
