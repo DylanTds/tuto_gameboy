@@ -4,9 +4,9 @@
 > Temps total à tester mes connaissances : 8h25  
   
 Réalisation des 23 videos de la chaine Youtube [GamingMonsters](https://www.youtube.com/c/GamingMonsters/videos).  
-Le but ? Me remettre dans la programmation en C sur Gameboy.  
+Le but ? Me remettre dans la programmation en [C](https://fr.wikipedia.org/wiki/C_(langage)) sur [Gameboy](https://en.wikipedia.org/wiki/List_of_best-selling_Game_Boy_video_games).  
 Les vidéos montrent les bases quand à la programmation de jeux.  
-Parfois je teste ce que j'ai appris en créant des ébauches de jeu.  
+Parfois je teste ce que j'ai appris en créant des [ébauches de jeu](https://github.com/DylanTds/tuto_gameboy/releases).  
   
 [Lien](https://github.com/DylanTds/tuto_gameboy/tree/main/VSCprojet_tutoGB_GamingMonsters/00%20Export%20pour%20test%20sur%20Gameboy) si vous voulez tester(via emulateur) les trucs que j'ai fait.  
   
