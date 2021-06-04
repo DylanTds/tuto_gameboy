@@ -1,23 +1,22 @@
 #include <gb/gb.h>
 #include <stdio.h>
+#include "SplashscreenMap.c"
+#include "SplashscreenTiles.c"
 #include "keyboardMap.c"
 #include "keyboardTiles.c"
 #include "CursorTiles.c"
 #include "Cursor.c"
+#include "BienvenueMap.c"
 
-#include "savestate.c"  // fichier de sauvegarde
+// pour en savoir plus sur les banques de sauvegardes : http://www.devrs.com/gb/files/sram.txt
 
-// indique qu'il faut le charger depuis un autre fichier
-extern UINT8 txt[11];    // txt saisi par l'utilisateur
-
-UINT8 i,a,b;
+extern UINT8 txt[12];          // txt saisi par l'utilisateur [13]-> nbr de char
+UINT8 i;
 struct Cursor souris;   // curseur pour le clavier
 UBYTE keydown;          // utilisateur appuie encore sur un bouton ou non
-
-UINT8 txtNbr;           // nombre de caracteres saisi
 UBYTE txtConf;          // fin de la saisie
 
-void perfDelay(UINT8 numloops){ UINT8 i; for( i = 0; i < numloops; i++){ wait_vbl_done(); } }
+void perfDelay(UINT8 numloops){ UINT8 ii; for(ii=0; ii<numloops; ii++){ wait_vbl_done(); } }
 
 void fadeOut(){ for(i=0; i<3; i++){ switch (i){ case 0: BGP_REG = 0xF9; break;
                                                 case 1: BGP_REG = 0xFE; break;
@@ -29,40 +28,43 @@ void fadeIn(){ for(i=0; i<3; i++){ switch (i){  case 0: BGP_REG = 0xFE; break;
                                                 case 2: BGP_REG = 0xE4; break; }
                                     perfDelay(5); } }
 
-// met fin a la saisie de text
-void TextConf(){ txtConf = 1; }
+// met fin a la saisie de text, si il y a au moins une lettre
+void TextConf(){ if(txt[12]>=1){ txtConf = 1; } }
 
 // affiche, via les tuiles de background, le text saisi dans "txt[]"
-void TextVisualOutput(){
+void TextVisualOutput(UINT8 x, UINT8 y){
+    if(txt[12] <= 0) return;
     // coords (tuiles) : (1;4) | dimension (tuiles) : 11*1 | les valeur de "txt[]"
-    set_bkg_tiles(7,2, 11,1, txt);
+    set_bkg_tiles(x,y, txt[12],1, txt);
 }
 
 // supprime la derniere lettre saisie 
 void TextDel(){
     // mais seulement si il y a deja quelque chose dans txt[]
-    if(txtNbr == 0) return;
+    if(txt[12] <= 0) return;
     // efface la derniere lettre saisie dans "txt[]"
-    txt[txtNbr-1] = 47;
-    //actualise l'affichage des lettres saisies
-    TextVisualOutput();
+    txt[txt[12]] = 0;
+    // replace la ligne en pointille
+    for(i=0; i<11; i++){ set_bkg_tiles((i+8),2, 1,1, keyboardMap); }
     //actualise le nombre de lettres saisies
-    txtNbr --;
+    txt[12] --;
+    //actualise l'affichage des lettres saisies
+    TextVisualOutput(8,2);
 }
 
 // saisi une lettre via l'id de la tuile actuellement sous la souris
 void TextAdd(struct Cursor* souris){
     UINT8 keyboardIndex;
     // si le tableau "txt[]" n'est pas plein (0-11)
-    if(txtNbr == 11) return;
+    if(txt[12] >= 11) return;
     // position de la souris en tuiles
     keyboardIndex = (souris->row * 9) + ((souris->col)+1);
     // sauvegarde la valeur de la tuile dans "txt[]" par ordre de saisie
-    txt[txtNbr] = keyboardIndex;
-    //actualise l'affichage des lettres saisies
-    TextVisualOutput();
+    txt[txt[12]] = keyboardIndex;
     //actualise le nombre de lettres saisies
-    txtNbr ++;
+    txt[12] ++;
+    //actualise l'affichage des lettres saisies
+    TextVisualOutput(8,2);
 }
 
 // verifie sur quelle tuile se trouve la souris et change l'action en accord
@@ -77,21 +79,23 @@ void KeyboardInput(struct Cursor* souris){
     }
 }
 
+// parcours le tableau et le remplis d'espace
+void resetTxt(){
+    for(i=0; i<11; i++){ txt[i] = 0x00; }
+    txt[12] = 0;
+}
+
 // verification pour savoir si on sort du clavier ou non
 UBYTE dansClavier( UINT8 x, UINT8 y){ return (14 <= x) && (x <= 142 ) && (54 <= y) && (y <= 118 ); }
 
-void main(){
-    SHOW_SPRITES;                               // preparations
-    SHOW_BKG;
-    DISPLAY_ON;
-
-    fadeOut();
-    set_bkg_data(0, 64, keyboardTiles);         // clavier
-    set_bkg_tiles(0, 0, 20, 18, keyboardMap);
-    scroll_bkg(0, 0, 4);
+// maintenant on peu l'appeller quand on veut pour taper un nom ou autre..
+void ecranClavier(){
+    set_bkg_data(0, 64, keyboardTiles);         // affiche le clavier
+    set_bkg_tiles(0, 0, 21, 18, keyboardMap);
+    scroll_bkg(8, 0);
     fadeIn();
-    
-    for(i=0; i<11; i++){ txt[i] = 47; } // tableau pour le text saisi
+
+    resetTxt();
 
     // defini la position de base de la souris
     souris.x = 14;
@@ -185,18 +189,42 @@ void main(){
                 break;
         }
     }
+    fadeOut();
+    HIDE_SPRITES;       // chache l'inutile 
+    scroll_bkg(-8, 0);  // reset la position du background
+    return;
+}
 
-    // montre que l'on a bien fini l'edition de text
-    HIDE_SPRITES;
-    //fadeOut();
-    // double boucle pour creer un background tout noir
-    for(a=0; a<20; a++){
-        for(b=0; b<18; b++){
-            set_bkg_tiles(a,0, 2,1, 47);
-            perfDelay(1);
-        }
+// affiche "Bienvenu" + le nom choisi par l'utilisateur
+void ecranBienvenue(){
+    set_bkg_data(0, 64, keyboardTiles);
+    set_bkg_tiles(0, 0, 20, 18, BienvenueMap);
+    TextVisualOutput(11,1);
+    fadeIn();
+}
+
+void main(){
+    // active la memory bank 01, sur laquelle on peut sauvegarder
+    ENABLE_RAM_MBC1;
+
+    set_bkg_data(0, 101, SplashscreenTiles);    // splash
+    set_bkg_tiles(0, 0, 20, 18, SplashscreenMap);
+    
+    SHOW_SPRITES;
+    SHOW_BKG;
+    DISPLAY_ON;
+
+    waitpad(J_START);
+    fadeOut();
+
+    // par defaut les données vides sont très grandes
+    // si la premire donnee du tableau est plus grande que 43 alors ce n'est pas une lettre mais une donnee vide
+    // donc on peut afficher le clavier pour que l'utilisateur tape son nom ou autre..
+    if((0 <= txt[0]) && (txt[0] >= 0x2B)){ //43 -> 0x2B (le text est formé avec les 43 tiles premiere tiles)
+        ecranClavier();
     }
-    // on affiche le contenu de "txt[]" centré au milieu de l'ecran
-    set_bkg_tiles( ((19-txtNbr)/2), 8, txtNbr, 1, txt );
-    //fadeIn();
+    ecranBienvenue();
+
+    DISABLE_RAM_MBC1;
+    
 }

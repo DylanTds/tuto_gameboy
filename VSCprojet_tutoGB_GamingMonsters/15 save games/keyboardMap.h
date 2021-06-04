@@ -7,7 +7,7 @@
  Info:
    Section       : 
    Bank          : 0
-   Map size      : 20 x 18
+   Map size      : 21 x 18
    Tile set      : C:\Users\Dylan\Documents\GameBoy\Renouveau\tuto_gameboy\VSCprojet_tutoGB_GamingMonsters\14 keyboard\keyboardTiles.gbr
    Plane count   : 1 plane (8 bits)
    Plane order   : Tiles are continues
@@ -18,7 +18,7 @@
 
 */
 
-#define keyboardMapWidth 20
+#define keyboardMapWidth 21
 #define keyboardMapHeight 18
 #define keyboardMapBank 0
 
