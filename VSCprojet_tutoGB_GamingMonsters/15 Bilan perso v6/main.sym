@@ -1,0 +1,202 @@
+; no$gmb format .sym file
+; Generated automagically by ASxxxx linker V01.75 (SDK 3.0.0)
+; Area: .  .ABS.
+00:0000 s__HEADER
+00:0000 .init
+00:0000 s__SFR
+00:0200 s__CODE
+00:174F s__HOME
+00:18FB s__BASE
+00:1B08 s__LIT
+00:1B08 s__GSINIT
+00:2888 s__GSINITTAIL
+00:2889 s__GSFINAL
+00:C000 .OAM
+00:C0A0 s__DATA
+00:C2F7 s__BSS
+00:C350 s__HEAP
+00:C350 s__BSEG
+00:C350 s__ISEG
+00:C350 s__XSEG
+00:C350 s__OVERLAY
+00:E000 .STACK
+00:FF80 .refresh_OAM
+; Area: _CODE
+00:0200 _perfDelay
+00:0214 _HeroTuiles
+00:0254 _ObjetTuiles
+00:02C4 _Level01Tuiles
+00:0514 _Level01MapComplet
+00:0FA0 _canPlayerMove
+00:10BA _main
+; Area: _HEADER
+00:01D2 _exit
+; Area: _HOME
+00:174F .set_mode
+00:175F .remove_VBL
+00:1765 .remove_LCD
+00:176B .remove_TIM
+00:1771 .remove_SIO
+00:1777 .remove_JOY
+00:177D .add_VBL
+00:1783 .add_LCD
+00:1789 .add_TIM
+00:178F .add_SIO
+00:1795 .add_JOY
+00:179B .remove_int
+00:17BB .add_int
+00:17D7 .wait_vbl_done
+00:17D7 _wait_vbl_done
+00:17EE _display_off
+00:17EE .display_off
+00:180F .serial_IO
+00:183E _mode
+00:1847 _get_mode
+00:184C _enable_interrupts
+00:184E _disable_interrupts
+00:1850 _reset
+00:1850 .reset
+00:1856 _set_interrupts
+00:1861 _remove_VBL
+00:186C _remove_LCD
+00:1877 _remove_TIM
+00:1882 _remove_SIO
+00:188D _remove_JOY
+00:1898 _add_VBL
+00:18A3 _add_LCD
+00:18AE _add_TIM
+00:18B9 _add_SIO
+00:18C4 _add_JOY
+00:18CF _clock
+00:18D8 __printTStates
+00:18D9 banked_call
+00:18F2 banked_ret
+; Area: _BASE
+00:18FB _scroll_bkg
+00:1911 .mv_sprite
+00:1920 _move_sprite
+00:192D __mulschar
+00:192D __muluchar
+00:1939 __mulsint
+00:1939 __muluint
+00:194D .mulu16
+00:194D .mul16
+00:1963 _set_win_data
+00:1963 _set_bkg_data
+00:19B0 _set_sprite_data
+00:19DF .scroll_sprite
+00:19F0 _scroll_sprite
+00:19FD .padup
+00:19FD _waitpadup
+00:1A0D .jpad
+00:1A3A .wait_pad
+00:1A41 _joypad
+00:1A46 _waitpad
+00:1A50 .set_sprite_tile
+00:1A5D _set_sprite_tile
+00:1A68 .copy_vram
+00:1A77 _get_data
+00:1A77 _set_data
+00:1A8A _set_bkg_tiles
+00:1A9E .set_xy_wtt
+00:1AAF .set_xy_btt
+00:1ABE .set_xy_tt
+00:1AEF _set_tiles
+; Area: _LIT
+; Area: _GSINIT
+00:1B08 gsinit
+; Area: _GSINITTAIL
+; Area: _GSFINAL
+; Area: _DATA
+00:C0A0 _Level01Map
+00:C2E0 _i
+00:C2E1 _Goal
+00:C2E2 _playerXY
+00:C2E6 _playerDim
+00:C2E8 _gravity
+00:C2E9 _midAir
+00:C2EA _playerSpeed
+00:C2EB _PlayerTravelled
+00:C2EC _collOffset
+00:C2EE _col_scrolled
+00:C2F0 _stage_width
+00:C2F2 _next_vram
+00:C2F4 _fin_scroll
+00:C2F5 _taille_Map
+; Area: _BSS
+00:C2F7 __cpu
+00:C2F8 .mode
+00:C2F9 __io_out
+00:C2FA __io_in
+00:C2FB __io_status
+00:C2FC .vbl_done
+00:C2FD __current_bank
+00:C2FE _sys_time
+00:C2FE .sys_time
+00:C300 .int_0x40
+00:C310 .int_0x48
+00:C320 .int_0x50
+00:C330 .int_0x58
+00:C340 .int_0x60
+; Area: _HEAP
+00:C350 _malloc_heap_start
+; Area: _OVERLAY
+; Area: _ISEG
+; Area: _BSEG
+; Area: _XSEG
+; Area: _SFR
+00:FF00 _P1_REG
+00:FF01 _SB_REG
+00:FF02 _SC_REG
+00:FF04 _DIV_REG
+00:FF05 _TIMA_REG
+00:FF06 _TMA_REG
+00:FF07 _TAC_REG
+00:FF0F _IF_REG
+00:FF10 _NR10_REG
+00:FF11 _NR11_REG
+00:FF12 _NR12_REG
+00:FF13 _NR13_REG
+00:FF14 _NR14_REG
+00:FF16 _NR21_REG
+00:FF17 _NR22_REG
+00:FF18 _NR23_REG
+00:FF19 _NR24_REG
+00:FF1A _NR30_REG
+00:FF1B _NR31_REG
+00:FF1C _NR32_REG
+00:FF1D _NR33_REG
+00:FF1E _NR34_REG
+00:FF20 _NR41_REG
+00:FF21 _NR42_REG
+00:FF22 _NR43_REG
+00:FF23 _NR44_REG
+00:FF24 _NR50_REG
+00:FF25 _NR51_REG
+00:FF26 _NR52_REG
+00:FF40 _LCDC_REG
+00:FF41 _STAT_REG
+00:FF42 _SCY_REG
+00:FF43 _SCX_REG
+00:FF44 _LY_REG
+00:FF45 _LYC_REG
+00:FF46 _DMA_REG
+00:FF47 _BGP_REG
+00:FF48 _OBP0_REG
+00:FF49 _OBP1_REG
+00:FF4A _WY_REG
+00:FF4B _WX_REG
+00:FF4D _KEY1_REG
+00:FF4F _VBK_REG
+00:FF51 _HDMA1_REG
+00:FF52 _HDMA2_REG
+00:FF53 _HDMA3_REG
+00:FF54 _HDMA4_REG
+00:FF55 _HDMA5_REG
+00:FF56 _RP_REG
+00:FF68 _BCPS_REG
+00:FF69 _BCPD_REG
+00:FF6A _OCPS_REG
+00:FF6B _OCPD_REG
+00:FF70 _SVBK_REG
+00:FFFF _IE_REG

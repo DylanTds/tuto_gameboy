@@ -1,0 +1,333 @@
+AREA .  .ABS.
+	RADIX HEX
+	BASE 0000
+	SIZE 0000
+	ATTRIB ABS OVR
+	GLOBALS
+		l__HEAP	0000
+		l__BSEG	0000
+		l_.  .ABS.	0000
+		l__GSFINAL	0000
+		l__ISEG	0000
+		s_.  .ABS.	0000
+		s__HEADER	0000
+		l__XSEG	0000
+		.init	0000
+		l__OVERLAY	0000
+		l__LIT	0000
+		s__SFR	0000
+		l__GSINITTAIL	0001
+		l__BSS	0059
+		l__HOME	01AC
+		l__HEADER	01E1
+		s__CODE	0200
+		l__BASE	020D
+		l__DATA	0257
+		l__GSINIT	0D80
+		l__CODE	154F
+		s__HOME	174F
+		s__BASE	18FB
+		s__LIT	1B08
+		s__GSINIT	1B08
+		s__GSINITTAIL	2888
+		s__GSFINAL	2889
+		.OAM	C000
+		s__DATA	C0A0
+		s__BSS	C2F7
+		s__HEAP	C350
+		s__BSEG	C350
+		s__ISEG	C350
+		s__XSEG	C350
+		s__OVERLAY	C350
+		.STACK	E000
+		.refresh_OAM	FF80
+		l__SFR	10000
+AREA _CODE
+	RADIX HEX
+	BASE 0200
+	SIZE 154F
+	ATTRIB REL CON
+	GLOBALS
+		_perfDelay	0200
+		_HeroTuiles	0214
+		_ObjetTuiles	0254
+		_Level01Tuiles	02C4
+		_Level01MapComplet	0514
+		_canPlayerMove	0FA0
+		_main	10BA
+AREA _HEADER
+	RADIX HEX
+	BASE 0000
+	SIZE 01E1
+	ATTRIB ABS OVR
+	GLOBALS
+		_exit	01D2
+AREA _HOME
+	RADIX HEX
+	BASE 174F
+	SIZE 01AC
+	ATTRIB REL CON
+	GLOBALS
+		.set_mode	174F
+		.remove_VBL	175F
+		.remove_LCD	1765
+		.remove_TIM	176B
+		.remove_SIO	1771
+		.remove_JOY	1777
+		.add_VBL	177D
+		.add_LCD	1783
+		.add_TIM	1789
+		.add_SIO	178F
+		.add_JOY	1795
+		.remove_int	179B
+		.add_int	17BB
+		.wait_vbl_done	17D7
+		_wait_vbl_done	17D7
+		_display_off	17EE
+		.display_off	17EE
+		.serial_IO	180F
+		_mode	183E
+		_get_mode	1847
+		_enable_interrupts	184C
+		_disable_interrupts	184E
+		_reset	1850
+		.reset	1850
+		_set_interrupts	1856
+		_remove_VBL	1861
+		_remove_LCD	186C
+		_remove_TIM	1877
+		_remove_SIO	1882
+		_remove_JOY	188D
+		_add_VBL	1898
+		_add_LCD	18A3
+		_add_TIM	18AE
+		_add_SIO	18B9
+		_add_JOY	18C4
+		_clock	18CF
+		__printTStates	18D8
+		banked_call	18D9
+		banked_ret	18F2
+AREA _BASE
+	RADIX HEX
+	BASE 18FB
+	SIZE 020D
+	ATTRIB REL CON
+	GLOBALS
+		_scroll_bkg	18FB
+		.mv_sprite	1911
+		_move_sprite	1920
+		__mulschar	192D
+		__muluchar	192D
+		__mulsint	1939
+		__muluint	1939
+		.mulu16	194D
+		.mul16	194D
+		_set_win_data	1963
+		_set_bkg_data	1963
+		_set_sprite_data	19B0
+		.scroll_sprite	19DF
+		_scroll_sprite	19F0
+		.padup	19FD
+		_waitpadup	19FD
+		.jpad	1A0D
+		.wait_pad	1A3A
+		_joypad	1A41
+		_waitpad	1A46
+		.set_sprite_tile	1A50
+		_set_sprite_tile	1A5D
+		.copy_vram	1A68
+		_get_data	1A77
+		_set_data	1A77
+		_set_bkg_tiles	1A8A
+		.set_xy_wtt	1A9E
+		.set_xy_btt	1AAF
+		.set_xy_tt	1ABE
+		_set_tiles	1AEF
+AREA _LIT
+	RADIX HEX
+	BASE 1B08
+	SIZE 0000
+	ATTRIB REL CON
+AREA _GSINIT
+	RADIX HEX
+	BASE 1B08
+	SIZE 0D80
+	ATTRIB REL CON
+	GLOBALS
+		gsinit	1B08
+AREA _GSINITTAIL
+	RADIX HEX
+	BASE 2888
+	SIZE 0001
+	ATTRIB REL CON
+AREA _GSFINAL
+	RADIX HEX
+	BASE 2889
+	SIZE 0000
+	ATTRIB REL CON
+AREA _DATA
+	RADIX HEX
+	BASE C0A0
+	SIZE 0257
+	ATTRIB REL CON
+	GLOBALS
+		_Level01Map	C0A0
+		_i	C2E0
+		_Goal	C2E1
+		_playerXY	C2E2
+		_playerDim	C2E6
+		_gravity	C2E8
+		_midAir	C2E9
+		_playerSpeed	C2EA
+		_PlayerTravelled	C2EB
+		_collOffset	C2EC
+		_col_scrolled	C2EE
+		_stage_width	C2F0
+		_next_vram	C2F2
+		_fin_scroll	C2F4
+		_taille_Map	C2F5
+AREA _BSS
+	RADIX HEX
+	BASE C2F7
+	SIZE 0059
+	ATTRIB REL CON
+	GLOBALS
+		__cpu	C2F7
+		.mode	C2F8
+		__io_out	C2F9
+		__io_in	C2FA
+		__io_status	C2FB
+		.vbl_done	C2FC
+		__current_bank	C2FD
+		_sys_time	C2FE
+		.sys_time	C2FE
+		.int_0x40	C300
+		.int_0x48	C310
+		.int_0x50	C320
+		.int_0x58	C330
+		.int_0x60	C340
+AREA _HEAP
+	RADIX HEX
+	BASE C350
+	SIZE 0000
+	ATTRIB REL CON
+	GLOBALS
+		_malloc_heap_start	C350
+AREA _OVERLAY
+	RADIX HEX
+	BASE C350
+	SIZE 0000
+	ATTRIB REL CON
+AREA _ISEG
+	RADIX HEX
+	BASE C350
+	SIZE 0000
+	ATTRIB REL CON
+AREA _BSEG
+	RADIX HEX
+	BASE C350
+	SIZE 0000
+	ATTRIB REL CON
+AREA _XSEG
+	RADIX HEX
+	BASE C350
+	SIZE 0000
+	ATTRIB REL CON
+AREA _SFR
+	RADIX HEX
+	BASE 0000
+	SIZE 10000
+	ATTRIB ABS OVR
+	GLOBALS
+		_P1_REG	FF00
+		_SB_REG	FF01
+		_SC_REG	FF02
+		_DIV_REG	FF04
+		_TIMA_REG	FF05
+		_TMA_REG	FF06
+		_TAC_REG	FF07
+		_IF_REG	FF0F
+		_NR10_REG	FF10
+		_NR11_REG	FF11
+		_NR12_REG	FF12
+		_NR13_REG	FF13
+		_NR14_REG	FF14
+		_NR21_REG	FF16
+		_NR22_REG	FF17
+		_NR23_REG	FF18
+		_NR24_REG	FF19
+		_NR30_REG	FF1A
+		_NR31_REG	FF1B
+		_NR32_REG	FF1C
+		_NR33_REG	FF1D
+		_NR34_REG	FF1E
+		_NR41_REG	FF20
+		_NR42_REG	FF21
+		_NR43_REG	FF22
+		_NR44_REG	FF23
+		_NR50_REG	FF24
+		_NR51_REG	FF25
+		_NR52_REG	FF26
+		_LCDC_REG	FF40
+		_STAT_REG	FF41
+		_SCY_REG	FF42
+		_SCX_REG	FF43
+		_LY_REG	FF44
+		_LYC_REG	FF45
+		_DMA_REG	FF46
+		_BGP_REG	FF47
+		_OBP0_REG	FF48
+		_OBP1_REG	FF49
+		_WY_REG	FF4A
+		_WX_REG	FF4B
+		_KEY1_REG	FF4D
+		_VBK_REG	FF4F
+		_HDMA1_REG	FF51
+		_HDMA2_REG	FF52
+		_HDMA3_REG	FF53
+		_HDMA4_REG	FF54
+		_HDMA5_REG	FF55
+		_RP_REG	FF56
+		_BCPS_REG	FF68
+		_BCPD_REG	FF69
+		_OCPS_REG	FF6A
+		_OCPD_REG	FF6B
+		_SVBK_REG	FF70
+		_IE_REG	FFFF
+MODULES
+	FILE c:\gbdk\lib/small/asxxxx/gb/crt0.o
+		NAME Runtime
+	FILE main.o
+		NAME lcc110160
+LIBRARIES
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE sfr.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE scroll_b.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE mv_spr.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib
+		MODULE mul.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_data.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE scroll_s.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE pad.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_spr.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE cpy_data.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_bk_t.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_xy_t.o
+USERBASEDEF
+	_CODE=0x0200
+	_DATA=0xC0A0
+	_CODE_1=0x4000
+USERGLOBALDEF
+	.OAM=0xC000
+	.STACK=0xE000
+	.refresh_OAM=0xFF80
+	.init=0x0000
