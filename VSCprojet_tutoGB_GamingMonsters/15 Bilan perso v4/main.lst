@@ -1,9 +1,9 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : FreeWare ANSI-C Compiler
-                              3 ; Version 2.2.1 Fri Jun 04 12:31:59 2021
+                              3 ; Version 2.2.1 Wed Jun 09 19:23:18 2021
                               4 
                               5 ;--------------------------------------------------------
-                              6 	.module lcc151400
+                              6 	.module lcc55480
                               7 	
                               8 ;--------------------------------------------------------
                               9 ; Public variables in this module
@@ -20628,11 +20628,11 @@
    1CEF E8 06             20628 	lda	sp,6(sp)
                           20629 ;	main.c 351
                           20630 ; genIpush
-   1CF1 3E 0B             20631 	ld	a,#0x0B
+   1CF1 3E 01             20631 	ld	a,#0x01
    1CF3 F5                20632 	push	af
    1CF4 33                20633 	inc	sp
                           20634 ; genIpush
-   1CF5 3E 01             20635 	ld	a,#0x01
+   1CF5 3E 0B             20635 	ld	a,#0x0B
    1CF7 F5                20636 	push	af
    1CF8 33                20637 	inc	sp
                           20638 ; genCall
