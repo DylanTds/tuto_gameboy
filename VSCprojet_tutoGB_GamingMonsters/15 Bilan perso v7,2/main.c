@@ -47,6 +47,38 @@ UBYTE canPlayerMove(UINT8 newX, UINT8 newY){
     return (TileFromMap[0]==NotSolid[0]) || (TileFromMap[0]==NotSolid[1]) || (TileFromMap[0]==NotSolid[2]) || (TileFromMap[0]==NotSolid[3]);
 }
 
+/*
+    Les sprites sont affiche sur une grille decalee pour pouvoir les faire deborder ou les cacher si besoin
+    L'origine n'est donc pas (0;0) mais (8;16) donc pour trouver la tuile en dessous il faut :
+    enlever 8 à X ET elever 16 à Y pour connaitre la position (du coin haut droit) du sprite (en pixel).
+    Par contre pour trouver leurs position sur la grille de tuile il faut encore diviser par 8 X et Y (en plus du -8 et -16).
+    
+    donc  hautGauche -> (X-8) (Y-16)                   hautDroit -> ((X-8)+playerDim[0]) (Y-16)
+    donc  basGauche  -> (X-8) ((Y-16)+playerDim[1])    basDroit  -> ((X-8)+playerDim[0]) ((Y-16)+playerDim[1])
+
+    Si on detecte un mouvement 
+    verifier la collision avec la prochaine tuile directe
+    (verifier si on se deplace sur 1 tuile entiere ou on est sur plusieurs tuiles)
+    verifier si on va ver le haut OU le bas OU la droite OU la gauche
+      si haut utiliser les coords hautGauche et hautDroit
+      si bas utiliser les coords basGauche et basdroit
+      si droite utiliser les coords hautDroit et basDroit
+      si gauche utiliser les coords hautGauche et basGauche
+    compter le nombre de tuiles que les coords vont traverser
+    pour chaque tuile verifier qu'il n'y a pas collision
+     si il y a collision on retourne la position a laquelle le sprite doit s'arreter en milieu de course
+     si il n'y a pas collision on va jusqu'au bout du mouvement on retourne les coords de la fin de la course
+    
+
+
+
+*/
+
+
+
+
+
+
 void nextTile(){
 
 }
