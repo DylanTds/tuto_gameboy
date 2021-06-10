@@ -1,7 +1,7 @@
 # Echauffement prog. C sur GameBoy  
   
 > Temps total d'aprentissage avec les videos : 29h57  
-> Temps total à tester mes connaissances : 40h51  
+> Temps total à tester mes connaissances : 52h49  
   
 Réalisation des 23 videos de la chaine Youtube [GamingMonsters](https://www.youtube.com/c/GamingMonsters/videos).  
 Le but ? Me remettre dans la programmation en [C](https://fr.wikipedia.org/wiki/C_(langage)) sur [Gameboy](https://en.wikipedia.org/wiki/List_of_best-selling_Game_Boy_video_games).  
