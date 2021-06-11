@@ -1,7 +1,7 @@
 # Echauffement prog. C sur GameBoy  
   
 > Temps total d'aprentissage avec les videos : 29h57  
-> Temps total à tester mes connaissances : 52h49  
+> Temps total à tester mes connaissances : 53h04  
   
 Réalisation des 23 videos de la chaine Youtube [GamingMonsters](https://www.youtube.com/c/GamingMonsters/videos).  
 Le but ? Me remettre dans la programmation en [C](https://fr.wikipedia.org/wiki/C_(langage)) sur [Gameboy](https://en.wikipedia.org/wiki/List_of_best-selling_Game_Boy_video_games).  
@@ -11,8 +11,8 @@ Parfois je teste ce que j'ai appris en créant des [ébauches de jeu](https://gi
 [Lien](https://github.com/DylanTds/tuto_gameboy/tree/main/VSCprojet_tutoGB_GamingMonsters/00%20Export%20pour%20test%20sur%20Gameboy) si vous voulez tester(via emulateur) les trucs que j'ai fait.  
   
 > Temps passé sur les videos 1 à 8 : 8h32.  
-> Temps passé sur les videos 9 à 14 : 21h25.  
-> Temps passé sur "bilan perso" : 40h51.  
+> Temps passé sur les videos 9 à 14 : 21h25.
+> Temps passé sur les videos 15 à 23 : 0h00.
   
   
 ## Documentation  
@@ -45,4 +45,3 @@ Cartouche de test - [EVERDRIVE-GB X7](https://everdrive.me/cartridges/edgbx7.htm
   
 Consoles de test - [GameBoy Color](https://www.google.com/search?q=gameboy+color) et [GameBoy Advance](https://www.google.com/search?q=gameboy+advance)  
   
-+0h00.  
