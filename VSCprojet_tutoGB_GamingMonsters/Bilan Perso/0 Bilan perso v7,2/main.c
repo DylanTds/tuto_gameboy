@@ -57,18 +57,18 @@ UBYTE canPlayerMove(UINT8 newX, UINT8 newY){
     donc  basGauche  -> (X-8) ((Y-16)+playerDim[1])    basDroit  -> ((X-8)+playerDim[0]) ((Y-16)+playerDim[1])
 
     Si on detecte un mouvement 
-    verifier la collision avec la prochaine tuile directe
-    (verifier si on se deplace sur 1 tuile entiere ou on est sur plusieurs tuiles)
-    verifier si on va ver le haut OU le bas OU la droite OU la gauche
+    verifier si on va vers le haut OU le bas OU la droite OU la gauche (deux directions si diagonale)
       si haut utiliser les coords hautGauche et hautDroit
       si bas utiliser les coords basGauche et basdroit
       si droite utiliser les coords hautDroit et basDroit
       si gauche utiliser les coords hautGauche et basGauche
     compter le nombre de tuiles que les coords vont traverser
-    pour chaque tuile verifier qu'il n'y a pas collision
+    pour chaque tuile verifier qu'il n'y ai pas collision
      si il y a collision on retourne la position a laquelle le sprite doit s'arreter en milieu de course
      si il n'y a pas collision on va jusqu'au bout du mouvement on retourne les coords de la fin de la course
     
+
+    Le probleme c'est que dans l'ancien code, si on se déplace de plus d'une tuile, ça casse tout le code..
 
 
 

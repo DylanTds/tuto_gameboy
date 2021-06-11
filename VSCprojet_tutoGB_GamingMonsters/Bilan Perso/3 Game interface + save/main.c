@@ -14,6 +14,8 @@
 #include "Cursor.c"
 
 extern UINT8 txt[12];  // txt[0-11] -> txt saisi par l'utilisateur | txt[12]-> nbr de char
+UINT8 score[6];          // txt[0-5] -> score utilisateur
+
 UINT8 i;
 UBYTE keydown;         // utilisateur appuie encore sur un bouton ou non
 UBYTE txtValid;         // fin de la saisie
@@ -184,10 +186,23 @@ void ecranClavier(){
 
 // affiche le nom et le score
 void ecranScore(){
+    // background
     set_bkg_data(0, 64, keyboardTiles);
     set_bkg_tiles(0, 0, 20, 18, ScorescreenMap);
+    // affichage nom
     TextVisualOutput(1,4);
-    TextVisualOutput(1,4);
+
+    // exemple, score = 001 553
+    // 0-> 0x1B   1-> 0x1C   2-> 0x1D   3-> 0x1E   4-> 0x1F
+    // 5-> 0x20   6-> 0x21   7-> 0x22   8-> 0x23   9-> 0x24
+    score[0] = 0x1B;
+    score[1] = 0x1B;
+    score[2] = 0x1C;
+    score[3] = 0x20;
+    score[4] = 0x20;
+    score[5] = 0x1E;
+    // affichage score
+    set_bkg_tiles(13,4, 6,1, score);
     fadeIn();
     
     waitpad(J_B);
@@ -196,12 +211,36 @@ void ecranScore(){
 
 void bouclePrincipale(){
     // titlescreen
-    set_bkg_data(0, 240, TitlescreenTiles);    
+    set_bkg_data(0, 193, TitlescreenTiles);    
     set_bkg_tiles(0, 0, 20, 18, TitlescreenMap);
+    // press start
+    set_sprite_data(0, 21, keyboardTiles);
+    //
+    set_sprite_tile(0, 16);  // P
+    set_sprite_tile(1, 18);  // R
+    set_sprite_tile(2, 05);  // E
+    set_sprite_tile(3, 19);  // S
+    set_sprite_tile(4, 19);  // S
+    set_sprite_tile(6, 19);  // S
+    set_sprite_tile(7, 20);  // T
+    set_sprite_tile(8, 01);  // A
+    set_sprite_tile(9, 18);  // R
+    set_sprite_tile(10, 20);  // T
+    // positionne les tuiles et
+    // change le background en dessous
+    for(i=0;i<11;i++){
+        if(i!=5){
+            set_bkg_tiles((4+i),15,  1,1, 0);
+            move_sprite(i, (40+(i*8)),136);
+        }
+    }
+    //        
     fadeIn();
-
+    //commandes
     waitpad(J_START|J_A);
     fadeOut();
+
+    // jeu ici
 
     // si le premier char de txt[] est plus grande que 43..(43 -> 0x2B)
     if((0 <= txt[0]) && (txt[0] >= 0x2B)){
@@ -209,7 +248,6 @@ void bouclePrincipale(){
         ecranClavier();
     }
     ecranScore();
-    
     bouclePrincipale();
 }
 
