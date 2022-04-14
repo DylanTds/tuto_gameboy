@@ -8,7 +8,7 @@ Le but ? Me remettre dans la programmation en [C](https://fr.wikipedia.org/wiki/
 Les vidéos montrent les bases quand à la programmation de jeux.  
 Parfois je teste ce que j'ai appris en créant des [ébauches de jeu](https://github.com/DylanTds/tuto_gameboy/releases).  
   
-[Lien](https://github.com/DylanTds/tuto_gameboy/tree/main/VSCprojet_tutoGB_GamingMonsters/00%20Export%20pour%20test%20sur%20Gameboy) si vous voulez tester(via emulateur) les trucs que j'ai fait.  
+[Lien](https://github.com/DylanTds/tuto_gameboy/tree/main/VSCprojet_tutoGB_GamingMonsters/00%20Export%20tester%20Gameboy) si vous voulez tester(via emulateur) les trucs que j'ai fait.  
   
 > Temps passé sur les videos 1 à 8 : 8h32.  
 > Temps passé sur les videos 9 à 14 : 21h25.
